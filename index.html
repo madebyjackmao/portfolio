@@ -797,7 +797,7 @@
           </div>
           <div class="project-info">
             <div>
-              <h3>From Shadow to Selene</h3>
+              <h3>From Shadow to Serenity</h3>
               <p>Typography · 2025</p>
             </div>
             <div class="project-arrow">→</div>
@@ -916,11 +916,20 @@
     // Enter button → hide splash, show main
     const splash = document.getElementById('splash');
     const main = document.getElementById('main');
-    document.getElementById('enterBtn').addEventListener('click', () => {
+
+    function showMain() {
       splash.classList.add('hidden');
       main.classList.add('visible');
       document.body.style.overflow = '';
-    });
+    }
+
+    // Skip splash if arriving from a project page via #work
+    if (window.location.hash === '#work') {
+      showMain();
+      document.getElementById('work').scrollIntoView();
+    }
+
+    document.getElementById('enterBtn').addEventListener('click', showMain);
 
     // Intersection observer for subtle entrance animations
     const observer = new IntersectionObserver(entries => {
