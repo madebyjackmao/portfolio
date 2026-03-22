@@ -693,16 +693,57 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      /* Nav */
       nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.7rem; }
+
+      /* Splash */
+      .splash-year { font-size: clamp(3.5rem, 20vw, 6rem); }
+      .splash-title { font-size: clamp(3rem, 18vw, 5.5rem); }
+      .enter-btn { font-size: 1rem; padding: 0.85rem 1.6rem; }
+
+      /* Hero */
       #hero { padding: 0 1.5rem 3rem; }
+      .hero-bg-text { display: none; }
+      .hero-heading { font-size: clamp(2.5rem, 11vw, 4rem); }
+      .hero-sub { font-size: 0.85rem; }
+
+      /* Marquee */
+      .marquee-inner span { font-size: 0.95rem; padding: 0 1.5rem; }
+
+      /* Work */
       #work { padding: 5rem 1.5rem; }
       .work-categories { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
+      .cat-title { font-size: 1.3rem; }
+
+      /* About */
       #about { padding: 5rem 1.5rem; }
       .about-inner { grid-template-columns: 1fr; gap: 3rem; }
-      #contact { padding: 5rem 1.5rem; }
-      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .about-right { order: -1; }
+      .about-name { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+      .about-bio { font-size: 0.88rem; }
+      .about-links { flex-wrap: wrap; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-badge { left: 0.5rem; bottom: 0.5rem; padding: 0.75rem 1rem; font-size: 0.72rem; }
+
+      /* Contact */
+      #contact { padding: 5rem 1.5rem; }
+      .contact-heading { font-size: clamp(2rem, 10vw, 3rem); }
+      .contact-email { font-size: clamp(1rem, 5vw, 1.5rem); word-break: break-all; }
+      .contact-socials { flex-wrap: wrap; justify-content: center; }
+
+      /* Footer */
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 400px) {
+      .splash-year { font-size: 18vw; }
+      .splash-title { font-size: 16vw; }
+      .nav-links { gap: 0.8rem; }
+      .hero-heading { font-size: 10vw; }
+      .contact-email { font-size: 4.5vw; }
     }
   </style>
 </head>
