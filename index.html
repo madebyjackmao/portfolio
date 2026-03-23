@@ -588,6 +588,80 @@
       font-family: 'DM Mono', monospace;
     }
 
+    .inspirations-section {
+      margin-top: 5rem;
+      padding-top: 4rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .inspirations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .inspiration-card {
+      display: block;
+      text-decoration: none;
+      padding: 2rem;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      color: #111;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+      cursor: none;
+    }
+    .inspiration-card:hover {
+      border-color: var(--coral);
+      background: rgba(255,85,51,0.04);
+      transform: translateY(-4px);
+    }
+    .inspiration-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+    .inspiration-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .inspiration-arrow {
+      font-size: 1.1rem;
+      color: var(--coral);
+      transition: transform 0.2s;
+    }
+    .inspiration-card:hover .inspiration-arrow { transform: translate(3px, -3px); }
+    .inspiration-role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1rem;
+      font-family: 'DM Mono', monospace;
+    }
+    .inspiration-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.55);
+      margin-bottom: 1.25rem;
+    }
+    .inspiration-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .inspiration-tags span {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      background: rgba(0,0,0,0.06);
+      color: rgba(0,0,0,0.45);
+    }
+
     .skills-grid {
       margin-top: 3rem;
       display: grid;
@@ -990,16 +1064,34 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Contact -->
+      <!-- Inspirations -->
+      <div class="inspirations-section">
+        <div class="about-label" style="margin-bottom:2rem;">✦ Designers I admire</div>
+        <div class="inspirations-grid">
+          <a class="inspiration-card" href="https://sophii.co/" target="_blank" rel="noopener">
+            <div class="inspiration-header">
+              <div class="inspiration-name">Sophie Zhao</div>
+              <div class="inspiration-arrow">↗</div>
+            </div>
+            <div class="inspiration-role">Product Designer — Toronto</div>
+            <p class="inspiration-desc">Sophie's work sits at the intersection of product design and personality — her portfolio exudes a rare sense of play that makes functional design feel genuinely joyful. Her belief that great design must touch both the heart and the mind is something I carry into my own practice.</p>
+            <div class="inspiration-tags">
+              <span>Product Design</span>
+              <span>Branding</span>
+              <span>Editorial</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
     <section id="contact">
       <div class="contact-bg"></div>
       <div class="contact-inner">
         <div class="contact-label">✦ Let's connect</div>
         <h2 class="contact-heading">Got a project<br><em>in mind?</em></h2>
         <p class="contact-sub">I'm always open to new opportunities, collaborations, and interesting ideas. Drop me a line and let's create something together.</p>
-        <a class="contact-email" href="/cdn-cgi/l/email-protection#e08a81838bce8d818fa0948f928f8e948f8d95ce8381"><span class="__cf_email__" data-cfemail="244e45474f0a49454b64504b564b4a504b49510a4745">[email&#160;protected]</span></a>
+        <a class="contact-email" href="mailto:jack.mao@torontomu.ca">jack.mao@torontomu.ca</a>
         <div class="contact-socials">
           <a class="social-btn" href="https://www.linkedin.com/in/jack-mao-621bb021b/" target="_blank">↗ LinkedIn</a>
           <a class="social-btn" href="#">↗ Instagram</a>
