@@ -63,8 +63,9 @@
     .img-caption{font-size:.72rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;text-align:center;margin-top:-.75rem;margin-bottom:1.5rem;}
     hr.div{border:none;border-top:1px solid rgba(255,255,255,.06);margin:3rem 0;}
     .logo-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden;margin:2.5rem 0;}
-    .logo-cell{aspect-ratio:4/3;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.1);font-family:'DM Mono',monospace;transition:background .3s;}
+    .logo-cell{aspect-ratio:4/3;background:var(--navy2);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background .3s;position:relative;}
     .logo-cell:hover{background:#1e1b30;}
+    .logo-cell svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
     .logo-cell img{width:60%;height:60%;object-fit:contain;}
     .next-project{padding:5rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--white);transition:background .3s;cursor:none;}
     .next-project:hover{background:rgba(123,108,246,.06);}
@@ -132,7 +133,7 @@
 
       <!-- Cell 1: JACK MAO name specimen dark -->
       <div class="logo-cell" style="background:#0a0912;">
-        <svg width="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 280 210" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <rect width="280" height="210" fill="#0a0912"/>
           <line x1="30" y1="70" x2="250" y2="70" stroke="rgba(245,240,232,0.06)" stroke-width="0.5"/>
           <line x1="30" y1="148" x2="250" y2="148" stroke="rgba(245,240,232,0.06)" stroke-width="0.5"/>
@@ -143,8 +144,7 @@
 
       <!-- Cell 2: JM monogram italic cream -->
       <div class="logo-cell" style="background:#1a0a06;">
-        <svg width="280" height="210" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="280" height="210" fill="#1a0a06"/>
+        <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
           <text x="140" y="138" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-style="italic" font-weight="400" font-size="88" fill="#f5f0e8" letter-spacing="-2">JM</text>
           <text x="140" y="165" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-size="10" fill="rgba(245,240,232,0.3)" letter-spacing="6">Serif</text>
         </svg>
@@ -152,7 +152,7 @@
 
       <!-- Cell 3: Portfolio italic display -->
       <div class="logo-cell" style="background:#0f0e1a;">
-        <svg width="280" height="210" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
           <rect width="280" height="210" fill="#0f0e1a"/>
           <text x="140" y="118" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-style="italic" font-weight="400" font-size="28" fill="#f5f0e8" letter-spacing="4">Portfolio</text>
           <line x1="60" y1="130" x2="220" y2="130" stroke="rgba(245,240,232,0.1)" stroke-width="0.5"/>
@@ -162,7 +162,7 @@
 
       <!-- Cell 4: Design · Illustration tagline light bg -->
       <div class="logo-cell" style="background:#f5f0e8;">
-        <svg width="280" height="210" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
           <rect width="280" height="210" fill="#f5f0e8"/>
           <text x="140" y="98" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-weight="700" font-size="13" fill="#111" letter-spacing="6">DESIGN</text>
           <line x1="80" y1="108" x2="200" y2="108" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>
@@ -174,7 +174,7 @@
 
       <!-- Cell 5: Elegance quote dark -->
       <div class="logo-cell" style="background:#0a0912;">
-        <svg width="280" height="210" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
           <rect width="280" height="210" fill="#0a0912"/>
           <text x="140" y="100" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-style="italic" font-size="15" fill="rgba(245,240,232,0.5)" letter-spacing="2">elegance in</text>
           <text x="140" y="122" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-style="italic" font-size="15" fill="rgba(245,240,232,0.5)" letter-spacing="2">every stroke</text>
@@ -185,7 +185,7 @@
 
       <!-- Cell 6: Full alphabet specimen -->
       <div class="logo-cell" style="background:#16152b;">
-        <svg width="280" height="210" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
           <rect width="280" height="210" fill="#16152b"/>
           <text x="140" y="88" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-size="13" fill="rgba(245,240,232,0.6)" letter-spacing="4">A B C D E F G H I</text>
           <text x="140" y="108" text-anchor="middle" font-family="'Playfair Display','Didot',serif" font-size="13" fill="rgba(245,240,232,0.6)" letter-spacing="4">J K L M N O P Q R</text>
