@@ -19,6 +19,16 @@
       --cream2: #e8e0d0;
       --white: #ffffff;
       --muted: #6b6880;
+      /* ── Glass tokens: V1 desktop = no glass, V2 mobile = liquid glass ── */
+      --glass-bg: transparent;
+      --glass-bg-hover: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --glass-border-top: rgba(255,255,255,0.08);
+      --glass-blur: none;
+      --glass-blur-sm: none;
+      --glass-shine: none;
+      --glass-shadow: none;
+      --glass-shadow-card: none;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -146,15 +156,27 @@
     /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0.75rem; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 3rem); max-width: 1100px;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.4rem 3rem;
-      background: rgba(15,14,26,0.7);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 1rem 2rem;
+      background: rgba(15,14,26,0.45);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-top);
+      border-radius: 100px;
+      box-shadow: var(--glass-shadow);
+      overflow: visible;
+    }
+    nav::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0) 70%);
+      border-radius: inherit; pointer-events: none;
     }
     .nav-logo {
       font-weight: 800;
@@ -200,6 +222,7 @@
       letter-spacing: -0.05em;
     }
     .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -208,6 +231,21 @@
       margin-bottom: 1.5rem;
       word-break: break-word;
       overflow-wrap: break-word;
+      padding: 0.35rem 1rem;
+      background: rgba(204,255,0,0.05);
+      backdrop-filter: var(--glass-blur-sm);
+      -webkit-backdrop-filter: var(--glass-blur-sm);
+      border: 1px solid rgba(204,255,0,0.14);
+      border-top-color: rgba(204,255,0,0.24);
+      border-radius: 100px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2), 0 1px 0 rgba(204,255,0,0.08) inset;
+      position: relative; overflow: hidden;
+    }
+    .hero-tag::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 60%);
+      pointer-events: none;
     }
     .hero-heading {
       font-weight: 800;
@@ -316,12 +354,28 @@
       margin-bottom: 5rem;
     }
     .category-card {
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-top);
       border-radius: 16px;
       padding: 2rem;
-      background: rgba(255,255,255,0.02);
-      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--glass-shadow-card);
+      transition: border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
       cursor: none;
+      position: relative; overflow: hidden;
+    }
+    .category-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--glass-shine);
+      pointer-events: none;
+    }
+    .category-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);
     }
     .category-card:hover {
       border-color: var(--purple);
@@ -394,12 +448,23 @@
     .project-card {
       border-radius: 16px;
       overflow: hidden;
-      background: var(--navy2);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(22,21,43,0.7);
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-top);
+      backdrop-filter: var(--glass-blur-sm);
+      -webkit-backdrop-filter: var(--glass-blur-sm);
+      box-shadow: var(--glass-shadow-card);
       cursor: none;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
-    .project-card:hover { transform: translateY(-4px); }
+    .project-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent);
+      pointer-events: none; z-index: 1;
+    }
+    .project-card:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.10) inset; }
     .project-card:hover .project-thumb { transform: scale(1.04); }
 
     .project-thumb-wrap {
@@ -750,14 +815,26 @@
       gap: 0.5rem;
       padding: 0.7rem 1.5rem;
       border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.6);
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-top);
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur-sm);
+      -webkit-backdrop-filter: var(--glass-blur-sm);
+      box-shadow: var(--glass-shadow);
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.06em;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
       cursor: none;
+      position: relative; overflow: hidden;
+    }
+    .social-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 60%);
+      border-radius: inherit; pointer-events: none;
     }
     .social-btn:hover {
       border-color: var(--lime);
@@ -767,14 +844,28 @@
 
     /* ── FOOTER ── */
     footer {
-      padding: 2rem 3rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 0 1.5rem 1.5rem;
+      padding: 1.25rem 2rem;
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-top);
+      border-radius: 16px;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur-sm);
+      -webkit-backdrop-filter: var(--glass-blur-sm);
+      box-shadow: var(--glass-shadow);
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 0.75rem;
       color: rgba(255,255,255,0.2);
       font-family: 'DM Mono', monospace;
+      position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 50%);
+      pointer-events: none;
     }
     footer span { color: var(--purple-light); }
 
@@ -834,6 +925,86 @@
       .hero-tag { font-size: 0.55rem; letter-spacing: 0.08em; }
       .hero-heading { font-size: clamp(1.6rem, 6.5vw, 3rem); }
       .contact-email { font-size: 4.5vw; }
+    }
+
+    /* ═══════════════════════════════════════
+       V1 DESKTOP (≥769px) — strip all glass
+    ═══════════════════════════════════════ */
+    @media (min-width: 769px) {
+      nav {
+        top: 0; left: 0; right: 0; transform: none; width: auto;
+        border-radius: 0; padding: 1.4rem 3rem;
+        border: none; border-bottom: 1px solid rgba(255,255,255,0.05);
+        background: rgba(15,14,26,0.85);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        box-shadow: none;
+      }
+      nav::before { display: none; }
+      footer {
+        margin: 0; border-radius: 0; padding: 2rem 3rem;
+        border: none; border-top: 1px solid rgba(255,255,255,0.06);
+        background: transparent;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        box-shadow: none;
+      }
+      footer::before { display: none; }
+      .hero-tag {
+        background: transparent; border: none; border-radius: 0;
+        padding: 0; backdrop-filter: none; -webkit-backdrop-filter: none;
+        box-shadow: none;
+      }
+      .hero-tag::before { display: none; }
+      .category-card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        box-shadow: none;
+      }
+      .category-card::before, .category-card::after { display: none; }
+      .project-card {
+        background: var(--navy2);
+        border: 1px solid rgba(255,255,255,0.06);
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        box-shadow: none;
+      }
+      .project-card::after { display: none; }
+      .project-card:hover { box-shadow: none; }
+      .social-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        box-shadow: none;
+      }
+      .social-btn::before { display: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       V2 MOBILE (≤768px) — liquid glass on
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      :root {
+        --glass-bg: rgba(255,255,255,0.04);
+        --glass-bg-hover: rgba(255,255,255,0.07);
+        --glass-border: rgba(255,255,255,0.09);
+        --glass-border-top: rgba(255,255,255,0.16);
+        --glass-blur: blur(18px) saturate(160%);
+        --glass-blur-sm: blur(10px) saturate(140%);
+        --glass-shine: linear-gradient(135deg,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.02) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.05) 100%);
+        --glass-shadow: 0 6px 24px rgba(0,0,0,0.28),0 1px 0 rgba(255,255,255,0.06) inset,0 -1px 0 rgba(0,0,0,0.15) inset;
+        --glass-shadow-card: 0 12px 36px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.07) inset,0 -1px 0 rgba(0,0,0,0.18) inset;
+      }
+      nav {
+        top: 0.75rem; left: 50%; right: auto;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem); max-width: 600px;
+        border-radius: 100px; padding: 0.85rem 1.25rem;
+        background: rgba(15,14,26,0.45);
+        backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-top-color: var(--glass-border-top);
+        box-shadow: var(--glass-shadow);
+        border-bottom: none;
+      }
     }
   </style>
 </head>
@@ -896,15 +1067,15 @@
         </div>
         <div class="category-card">
           <div class="cat-num">02</div>
-          <div class="cat-title">Designs</div>
-          <p class="cat-desc">Editorial systems, <a href="projects/zara-larsson.html">album identities</a>, and CD packaging — design as a language for translating <a href="projects/zara-larsson.html">music and culture</a> into something you can hold.</p>
-          <a class="cat-link" href="projects/zara-larsson.html">View work →</a>
+          <div class="cat-title">Game Design</div>
+          <p class="cat-desc">World-building through narrative and mechanics — <a href="projects/hidesign.html">Chronicles of Elysium</a> follows a heroine's journey across a shattered world, designed using Aristotle's Poetics and <a href="projects/hidesign.html">Campbell's Hero's Journey</a>.</p>
+          <a class="cat-link" href="projects/hidesign.html">View work →</a>
         </div>
         <div class="category-card">
           <div class="cat-num">03</div>
-          <div class="cat-title">Photography</div>
-          <p class="cat-desc">Through <a href="projects/shadow-to-selene.html">photo editing</a> and image composition, light and shadow become a <a href="projects/shadow-to-selene.html">language of their own</a>.</p>
-          <a class="cat-link" href="projects/shadow-to-selene.html">View work →</a>
+          <div class="cat-title">Typeface</div>
+          <p class="cat-desc">Through <a href="projects/logotype.html">JM Serif</a> — an original display typeface built on the Didot/Bodoni axis — letterform becomes identity. <a href="projects/logotype.html">Elegance in every stroke.</a></p>
+          <a class="cat-link" href="projects/logotype.html">View work →</a>
         </div>
       </div>
 
