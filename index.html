@@ -33,7 +33,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     /* ── Image protection ── */
     img { -webkit-user-drag: none; user-drag: none; user-select: none; -webkit-user-select: none; }
@@ -43,7 +43,6 @@
       font-family: 'Syne', sans-serif;
       background: var(--navy);
       color: var(--white);
-      overflow-x: hidden;
       cursor: none;
     }
 
@@ -975,6 +974,89 @@
         pointer-events: none;
       }
     }
+    /* ── Back to top ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 72px;
+      height: 72px;
+      z-index: 500;
+      cursor: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    /* Glass circle border */
+    #back-to-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: border-color 0.3s, background 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.08) inset;
+    }
+    #back-to-top:hover::before {
+      border-color: rgba(204,255,0,0.45);
+      background: rgba(204,255,0,0.06);
+    }
+    /* Rotating text ring */
+    .btt-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      animation: btt-spin 10s linear infinite;
+      animation-play-state: paused;
+    }
+    #back-to-top:hover .btt-ring,
+    #back-to-top.spinning .btt-ring {
+      animation-play-state: running;
+    }
+    @keyframes btt-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .btt-ring-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      fill: rgba(255,255,255,0.35);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    #back-to-top:hover .btt-ring-text {
+      fill: rgba(204,255,0,0.7);
+    }
+    /* Arrow icon */
+    .btt-arrow {
+      position: relative;
+      z-index: 1;
+      width: 22px;
+      height: 22px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.3s, transform 0.3s;
+      flex-shrink: 0;
+    }
+    #back-to-top:hover .btt-arrow {
+      color: var(--lime);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      #back-to-top { bottom: 5rem; right: 1.25rem; width: 64px; height: 64px; }
+    }
   </style>
 </head>
 <body>
@@ -1303,6 +1385,38 @@
         }
       });
     })();
+    // ── Back to top ──
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        btt.classList.add('visible');
+      } else {
+        btt.classList.remove('visible');
+      }
+    }, { passive: true });
+    btt.addEventListener('click', () => {
+      btt.classList.add('spinning');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => btt.classList.remove('spinning'), 1200);
+    });
+    btt.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+    btt.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   </script>
+  <!-- Back to top button -->
+  <div id="back-to-top" aria-label="Back to top">
+    <svg class="btt-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="btt-circle-path" d="M 60,60 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/>
+      </defs>
+      <text class="btt-ring-text">
+        <textPath href="#btt-circle-path" startOffset="0%">BACK TO TOP · BACK TO TOP · </textPath>
+      </text>
+    </svg>
+    <svg class="btt-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="19" x2="12" y2="5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <polyline points="6,11 12,5 18,11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
 </body>
 </html>
