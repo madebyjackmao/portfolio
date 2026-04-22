@@ -236,19 +236,25 @@
     a:focus-visible, button:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; border-radius: 6px; }
     :focus:not(:focus-visible) { outline: none; }
 
-    /* ── Video player ── */
-    .video-wrap {
+    /* ── Video player — GIF-style ── */
+    .blossom-videos {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
       margin: 1.5rem 0 0.25rem;
-      border-radius: 14px;
+    }
+    .video-wrap {
+      border-radius: 12px;
       overflow: hidden;
       background: #0a0912;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      line-height: 0;
     }
     .video-wrap video {
       display: block;
       width: 100%;
-      max-height: 70vh;
-      object-fit: contain;
+      height: auto;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -308,35 +314,24 @@
       <p>The following clips were filmed during the 2026 cherry blossom season in Toronto. Each is a raw capture — ungraded, unscored — from the ongoing edit. The final piece is still in production.</p>
     </div>
 
-    <!-- Video 1 -->
-    <div class="video-wrap">
-      <video controls playsinline preload="metadata"
-        style="width:100%;border-radius:14px;display:block;background:#0a0912;">
-        <source src="../images/blossom-1.mp4" type="video/mp4"/>
-        Your browser does not support video playback.
-      </video>
+    <div class="blossom-videos">
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../images/blossom-1.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../images/blossom-2.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../images/blossom-3.mp4" type="video/mp4"/>
+        </video>
+      </div>
     </div>
-    <p class="img-caption">Cherry Blossoms, High Park · Clip 01 · Video by Dave Krugman</p>
-
-    <!-- Video 2 -->
-    <div class="video-wrap">
-      <video controls playsinline preload="metadata"
-        style="width:100%;border-radius:14px;display:block;background:#0a0912;">
-        <source src="../images/blossom-2.mp4" type="video/mp4"/>
-        Your browser does not support video playback.
-      </video>
-    </div>
-    <p class="img-caption">Cherry Blossoms, High Park · Clip 02 · Video by Dave Krugman</p>
-
-    <!-- Video 3 -->
-    <div class="video-wrap">
-      <video controls playsinline preload="metadata"
-        style="width:100%;border-radius:14px;display:block;background:#0a0912;">
-        <source src="../images/blossom-3.mp4" type="video/mp4"/>
-        Your browser does not support video playback.
-      </video>
-    </div>
-    <p class="img-caption">Cherry Blossoms, High Park · Clip 03 · Video by Dave Krugman</p>
+    <p class="img-caption">Videos by Dave Krugman — from Threads</p>
 
     <hr class="div"/>
 
@@ -347,7 +342,7 @@
 
   </div>
 
-  class="next-project" href="chronicles-of-elysium.html">
+  <a class="next-project" href="chronicles-of-elysium.html">
     <div><div class="next-label">Next project</div><div class="next-title">Chronicles of Elysium</div></div>
     <div class="next-arrow">→</div>
   </a>
