@@ -287,7 +287,13 @@
     .marquee-inner {
       display: flex;
       gap: 0;
-      animation: marquee 18s linear infinite;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .marquee-span {
+      display: inline-block;
       white-space: nowrap;
     }
     .marquee-inner span {
@@ -310,7 +316,7 @@
     }
     @keyframes marquee {
       from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      to   { transform: translateX(-50%); }
     }
 
     /* ── WORK SECTION ── */
@@ -1197,6 +1203,7 @@
 
     /* ── Animated gradient border ── */
     .gradient-divider {
+      will-change: background-position;
       width: 100%;
       height: 2px;
       background: linear-gradient(90deg,
@@ -1262,9 +1269,9 @@
 
     <!-- Marquee -->
     <div class="marquee-wrap">
-      <div class="marquee-inner">
-        <span>Illustration <b>✦</b> Branding <b>✦</b> Game Design <b>✦</b> Typeface Design <b>✦</b> Photo Editing <b>✦</b> Advertising <b>✦</b> Toronto <b>✦</b> 2026 <b>✦</b></span>
-        <span>Illustration <b>✦</b> Branding <b>✦</b> Game Design <b>✦</b> Typeface Design <b>✦</b> Photo Editing <b>✦</b> Advertising <b>✦</b> Toronto <b>✦</b> 2026 <b>✦</b></span>
+      <div class="marquee-inner" aria-hidden="true">
+        <span class="marquee-span">Illustration <b>✦</b> Branding <b>✦</b> Game Design <b>✦</b> Typeface Design <b>✦</b> Photo Editing <b>✦</b> Advertising <b>✦</b> Toronto <b>✦</b> 2026 <b>✦</b></span>
+        <span class="marquee-span" aria-hidden="true">Illustration <b>✦</b> Branding <b>✦</b> Game Design <b>✦</b> Typeface Design <b>✦</b> Photo Editing <b>✦</b> Advertising <b>✦</b> Toronto <b>✦</b> 2026 <b>✦</b></span>
       </div>
     </div>
 
