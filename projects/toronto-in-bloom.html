@@ -257,6 +257,50 @@
       height: auto;
       object-fit: cover;
     }
+
+    /* ── Global smoothness ── */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal:nth-child(2) { transition-delay: 0.08s; }
+    .reveal:nth-child(3) { transition-delay: 0.16s; }
+
+    /* ── Card hover states ── */
+    .mechanic-card, .ideology-card, .campaign-card, .act-card {
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.25s, background 0.25s, box-shadow 0.25s;
+      cursor: none;
+    }
+    .mechanic-card:hover, .ideology-card:hover,
+    .campaign-card:hover, .act-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(123,108,246,0.3);
+      background: rgba(123,108,246,0.06);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+
+    /* ── Section heading fade-in ── */
+    .section-heading {
+      transition: color 0.2s;
+    }
+
+    /* ── Img lazy load fade ── */
+    img {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    img.loaded { opacity: 1; }
   </style>
 </head>
 <body>
@@ -406,6 +450,35 @@
         dropMenu.style.transform = 'translateY(-6px)';
       });
     }
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll(
+      '.section-heading, .body-text, .mechanic-card, .ideology-card, ' +
+      '.campaign-card, .act-card, .stat, .pull-quote, .image-grid, .video-wrap'
+    );
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('reveal','visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => {
+      el.classList.add('reveal');
+      revealObs.observe(el);
+    });
+
+    // ── Image fade-in on load ──
+    document.querySelectorAll('img').forEach(img => {
+      img.setAttribute('loading','lazy');
+      img.setAttribute('decoding','async');
+      if (img.complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => img.classList.add('loaded'));
+      }
+    });
   </script>
 </body>
 </html>
