@@ -570,7 +570,6 @@
 
     /* ── Special Editions Hub ── */
     .special-hub {
-      grid-column: 1 / -1;
       border-radius: 20px;
       overflow: hidden;
       background: var(--glass-bg);
@@ -594,7 +593,7 @@
       box-shadow: 0 0 40px rgba(180,20,20,0.18), 0 12px 40px rgba(0,0,0,0.4);
     }
     .hub-banner {
-      position: relative; height: 220px;
+      position: relative; height: 180px;
       overflow: hidden; display: flex;
     }
     .hub-half {
@@ -646,11 +645,10 @@
       position: relative; z-index: 2;
     }
     .hub-info {
-      padding: 1.5rem 2rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
     }
     .hub-meta {
       font-family: 'DM Mono', monospace;
@@ -672,7 +670,7 @@
       max-width: 400px;
       line-height: 1.65;
     }
-    .hub-btns { display: flex; gap: 0.75rem; flex-shrink: 0; }
+    .hub-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .hub-btn {
       display: inline-flex;
       align-items: center;
@@ -773,11 +771,11 @@
     .about-link.secondary { background: transparent; color: var(--navy); }
     .about-badge {
       position: absolute;
-      bottom: 1.25rem;
-      right: 1.25rem;
+      top: 1.25rem;
+      left: 1.25rem;
       display: inline-flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 0.2rem;
       padding: 0.5rem 1rem;
       background: rgba(15,14,26,0.75);
@@ -1180,9 +1178,11 @@
       .hub-btn    { flex: 1; justify-content: center; }
       #about { padding: 5rem 1.5rem; }
       .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .inspirations-grid { grid-template-columns: 1fr; }
       #contact { padding: 5rem 1.5rem; }
-      .contact-socials { flex-wrap: wrap; }
-      .contact-email { font-size: clamp(1rem, 5vw, 1.5rem); word-break: break-all; }
+      .contact-socials { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+      .contact-email { font-size: clamp(0.9rem, 4vw, 1.2rem); word-break: break-word; overflow-wrap: break-word; }
+      .social-btn { font-size: 0.72rem; padding: 0.6rem 1rem; }
       #back-to-top { bottom: 5rem; right: 1.25rem; width: 64px; height: 64px; }
       .category-card {
         background: var(--glass-bg);
@@ -1224,10 +1224,20 @@
         backdrop-filter: var(--glass-blur-sm);
         -webkit-backdrop-filter: var(--glass-blur-sm);
         box-shadow: var(--glass-shadow);
-        padding: 1.25rem 1.5rem;
+        padding: 1.5rem;
         position: relative; overflow: hidden;
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: center;
+        text-align: center;
       }
-      .marquee-span { font-size: 0.95rem; }
+      .marquee-span {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+      }
       .nav-links { gap: 1rem; }
       .nav-links a { font-size: 0.7rem; }
     }
