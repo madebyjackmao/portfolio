@@ -11,9 +11,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
   <meta name="theme-color" content="#ccff00"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body {
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
       font-family: 'Syne', sans-serif;
       background: #0f0e1a;
       color: #ffffff;
@@ -30,7 +32,8 @@
     -moz-osx-font-smoothing: grayscale;
       line-height: 1.6;
     }
-    .cursor {
+
+.cursor {
       position: fixed;
       width: 14px; height: 14px;
       background: #ccff00;
@@ -40,10 +43,12 @@
       transform: translate(-50%,-50%);
       transition: width .2s, height .2s;
       mix-blend-mode: difference;
+          will-change: left, top;
     }
 
-    /* Background glow */
-    .bg-glow {
+/* Background glow */
+
+.bg-glow {
       position: fixed; inset: 0; z-index: 0;
       background:
         radial-gradient(ellipse 50% 50% at 30% 60%, rgba(123,108,246,0.2) 0%, transparent 70%),
@@ -51,14 +56,15 @@
       pointer-events: none;
     }
 
-    .wrap {
+.wrap {
       position: relative; z-index: 1;
       text-align: center;
       max-width: 560px;
     }
 
-    /* Big 404 */
-    .four-oh-four {
+/* Big 404 */
+
+.four-oh-four {
       font-family: 'DM Serif Display', serif;
       font-style: italic;
       font-size: clamp(6rem, 20vw, 12rem);
@@ -69,7 +75,7 @@
       user-select: none;
     }
 
-    .tag {
+.tag {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -85,20 +91,21 @@
       margin-bottom: 1.5rem;
     }
 
-    .heading {
+.heading {
       font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.1;
       margin-bottom: 1rem;
     }
-    .heading em {
+
+.heading em {
       font-family: 'DM Serif Display', serif;
       font-style: italic;
       color: #a99cf8;
     }
 
-    .sub {
+.sub {
       font-size: 0.95rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.4);
@@ -106,13 +113,14 @@
       font-family: 'DM Mono', monospace;
     }
 
-    .btn-row {
+.btn-row {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
-    .btn {
+
+.btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -127,23 +135,29 @@
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: none;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
       background: #ccff00;
       color: #0f0e1a;
       border: none;
       box-shadow: 0 6px 24px rgba(204,255,0,0.2);
     }
-    .btn-primary:hover { box-shadow: 0 10px 32px rgba(204,255,0,0.3); }
-    .btn-ghost {
+
+.btn-primary:hover { box-shadow: 0 10px 32px rgba(204,255,0,0.3); }
+
+.btn-ghost {
       background: rgba(255,255,255,0.04);
       color: rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.1);
     }
-    .btn-ghost:hover { color: #ffffff; border-color: rgba(255,255,255,0.2); }
 
-    /* Decorative ✦ marks */
-    .deco {
+.btn-ghost:hover { color: #ffffff; border-color: rgba(255,255,255,0.2); }
+
+/* Decorative ✦ marks */
+
+.deco {
       position: fixed;
       font-size: 1rem;
       color: rgba(123,108,246,0.3);
@@ -151,26 +165,33 @@
       z-index: 0;
       animation: drift-deco 12s ease-in-out infinite;
     }
-    .deco:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
-    .deco:nth-child(2) { top: 70%; left: 8%;  animation-delay: -4s; font-size: 0.7rem; }
-    .deco:nth-child(3) { top: 20%; right: 8%; animation-delay: -8s; }
-    .deco:nth-child(4) { top: 75%; right: 12%;animation-delay: -2s; font-size: 0.7rem; }
-    @keyframes drift-deco {
+
+.deco:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+
+.deco:nth-child(2) { top: 70%; left: 8%;  animation-delay: -4s; font-size: 0.7rem; }
+
+.deco:nth-child(3) { top: 20%; right: 8%; animation-delay: -8s; }
+
+.deco:nth-child(4) { top: 75%; right: 12%;animation-delay: -2s; font-size: 0.7rem; }
+
+@keyframes drift-deco {
       0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
       50% { transform: translateY(-12px) rotate(15deg); opacity: 0.6; }
     }
 
-    @media (max-width: 480px) {
+@media (max-width: 480px) {
       .btn-row { flex-direction: column; align-items: center; }
       .btn { width: 100%; justify-content: center; }
     }
 
-    :focus-visible { outline: 2px solid #ccff00; outline-offset: 3px; border-radius: 4px; }
-    a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius: 6px; }
-    :focus:not(:focus-visible) { outline: none; }
+:focus-visible { outline: 2px solid #ccff00; outline-offset: 3px; border-radius: 4px; }
+
+a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius: 6px; }
+
+:focus:not(:focus-visible) { outline: none; }
   </style>
 </head>
-<body>
+<body style="touch-action: pan-y;">
   <div class="cursor" id="cursor"></div>
   <div class="bg-glow"></div>
 

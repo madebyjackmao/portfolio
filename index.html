@@ -37,6 +37,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+
+
+
     /* ══════════════════════════════════════════════════════════
        JACK MAO — PORTFOLIO INDEX
        Original design system — V1 desktop / V2 mobile glass
@@ -142,55 +145,68 @@
       will-change: transform, opacity;
       transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1),
                   transform 0.55s cubic-bezier(0.4,0,0.2,1);
+      overflow: hidden;
     }
     #splash.hidden { opacity: 0; pointer-events: none; transform: scale(1.03); }
 
     .splash-year {
-      font-size: clamp(3.5rem, 20vw, 8rem);
+      font-family: 'Syne', sans-serif;
       font-weight: 800;
-      letter-spacing: -0.05em;
-      color: rgba(255,255,255,0.07);
-      line-height: 1;
+      font-size: clamp(4rem, 15vw, 12rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      background: linear-gradient(160deg, #c4b5fd 0%, #7B6CF6 60%, #4c3fd0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both;
       user-select: none;
+      width: 90vw;
+      text-align: center;
     }
     .splash-title {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: clamp(2.5rem, 14vw, 6rem);
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.5rem, 14vw, 11rem);
+      line-height: 0.9;
       letter-spacing: -0.03em;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 2.5rem;
+      background: linear-gradient(160deg, #e0d8ff 0%, #9d8ffa 50%, #6B5CE7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both;
+      margin-bottom: 0;
       user-select: none;
+      width: 90vw;
+      text-align: center;
     }
     .enter-btn {
-      background: rgba(204,255,0,0.12);
-      border: 1px solid rgba(204,255,0,0.35);
-      color: var(--lime);
-      font-family: 'Syne', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.85rem 2.5rem;
-      border-radius: 100px;
-      cursor: none;
+      margin-top: 3rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
-                  box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+      background: var(--lime);
+      border: none;
+      border-radius: 100px;
+      padding: 1rem 2rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #111;
+      cursor: none;
+      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s both;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .enter-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 32px rgba(204,255,0,0.35), 0 8px 32px rgba(0,0,0,0.4);
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(204,255,0,0.4);
     }
     .enter-btn:active { transform: scale(0.97); }
     .dot {
-      width: 7px; height: 7px;
-      background: var(--lime);
+      width: 28px; height: 28px;
+      background: #111;
       border-radius: 50%;
-      animation: heartbeat 2.8s ease-in-out infinite;
+      flex-shrink: 0;
     }
     .splash-footer {
       position: absolute;
@@ -301,7 +317,7 @@
       position: relative; z-index: 1;
     }
     .hero-heading {
-      font-size: clamp(2.8rem, 6.5vw, 6rem);
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.06;
@@ -313,6 +329,7 @@
       font-style: italic;
       color: var(--purple-light);
     }
+    .hero-heading em .word { color: var(--purple-light); }
     .hero-sub {
       font-size: clamp(0.85rem, 1.4vw, 1rem);
       color: rgba(255,255,255,0.4);
@@ -385,15 +402,13 @@
 
     /* ── Work ── */
     #work { padding: 7rem 3rem; background: var(--navy); }
-    #about  { content-visibility: auto; contain-intrinsic-size: 0 900px; }
-    #contact { content-visibility: auto; contain-intrinsic-size: 0 600px; }
 
     .section-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--lime);
       margin-bottom: 2.5rem;
     }
     .work-categories {
@@ -421,8 +436,9 @@
     .cat-num {
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
+      font-weight: 700;
       letter-spacing: 0.2em;
-      color: var(--muted);
+      color: var(--coral);
       margin-bottom: 0.75rem;
     }
     .cat-title {
@@ -437,7 +453,7 @@
       line-height: 1.7;
       margin-bottom: 1.25rem;
     }
-    .cat-desc a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .cat-desc a { color: var(--purple-light); text-decoration: none; }
     .cat-desc a:hover { color: var(--lime); }
     .cat-link {
       font-size: 0.75rem;
@@ -690,6 +706,8 @@
       padding: 7rem 3rem;
       background: var(--cream);
       color: var(--navy);
+      content-visibility: auto;
+      contain-intrinsic-size: 0 900px;
     }
     .about-inner {
       display: grid;
@@ -702,7 +720,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(15,14,26,0.4);
+      color: var(--coral);
       margin-bottom: 1.25rem;
     }
     .about-name {
@@ -716,7 +734,7 @@
     .about-name em {
       font-family: 'DM Serif Display', serif;
       font-style: italic;
-      color: var(--purple);
+      color: var(--coral);
     }
     .about-bio {
       font-size: 0.95rem;
@@ -754,19 +772,29 @@
     }
     .about-link.secondary { background: transparent; color: var(--navy); }
     .about-badge {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 1.25rem;
       display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      background: rgba(255,85,51,0.1);
-      border: 1px solid rgba(255,85,51,0.2);
-      border-radius: 100px;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.2rem;
+      padding: 0.5rem 1rem;
+      background: rgba(15,14,26,0.75);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 1.5rem;
+      color: var(--white);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .about-badge small {
+      font-size: 0.6rem;
+      color: var(--lime);
+      letter-spacing: 0.1em;
     }
     .about-photo-card {
       border-radius: 20px;
@@ -791,7 +819,19 @@
       letter-spacing: 0.06em;
       color: rgba(15,14,26,0.6);
     }
-    .inspirations-section { margin-top: 3rem; }
+    .inspirations-section {
+      margin-top: 0;
+      padding-top: 4rem;
+      border-top: 1px solid rgba(15,14,26,0.1);
+    }
+    .inspirations-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 2rem;
+    }
     .inspirations-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -826,7 +866,7 @@
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
       letter-spacing: 0.1em;
-      color: rgba(15,14,26,0.4);
+      color: var(--coral);
       margin-bottom: 0.75rem;
     }
     .inspiration-desc {
@@ -874,13 +914,21 @@
       padding: 8rem 3rem;
       background: var(--navy);
       position: relative; overflow: hidden;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 600px;
     }
     .contact-bg {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(123,108,246,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
-    .contact-inner { position: relative; z-index: 1; }
+    .contact-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
     .contact-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
@@ -953,7 +1001,8 @@
       border-top: 1px solid rgba(255,255,255,0.06);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      text-align: center;
       font-size: 0.75rem;
       color: rgba(255,255,255,0.2);
       font-family: 'DM Mono', monospace;
@@ -1041,12 +1090,17 @@
     @keyframes bounce-soft { 0%,100% { transform: translateY(0); } 30% { transform: translateY(-5px); } 60% { transform: translateY(-2px); } }
     @keyframes btt-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     /* ══════════════════════════════════════
        V1 DESKTOP (≥769px) — strip glass, flush nav
     ══════════════════════════════════════ */
     @media (min-width: 769px) {
       nav {
-        top: 0; left: 0; right: 0; transform: none; width: auto;
+        top: 0; left: 0; right: 0; transform: none; width: 100%; max-width: none;
         border-radius: 0; padding: 1.4rem 3rem;
         border: none; border-bottom: 1px solid rgba(255,255,255,0.05);
         background: rgba(15,14,26,0.85);
@@ -1190,6 +1244,9 @@
       .fade-up, .word { transition: none; opacity: 1; transform: none; }
     }
 
+  
+  
+  
   </style>
 </head>
 <body style="touch-action: pan-y;">
@@ -1417,7 +1474,7 @@
 
       <!-- Inspirations -->
       <div class="inspirations-section">
-        <div class="about-label" style="margin-bottom:2rem;">✦ Designers I admire</div>
+        <div class="inspirations-label">✦ Designers I Admire</div>
         <div class="inspirations-grid">
           <a class="inspiration-card fade-up" data-delay="1" href="https://sophii.co/" target="_blank" rel="noopener">
             <div class="inspiration-header">
@@ -1597,6 +1654,10 @@
       requestAnimationFrame(() => {
         main.classList.add('visible');    // opacity: 0 → 1
         main.style.transform = 'scale(1)'; // scale: 0.985 → 1
+        // Reveal hero word-by-word after splash exits
+        document.querySelectorAll('.word-reveal').forEach(el => {
+          el.classList.add('is-visible');
+        });
       });
 
       // 4. After transition: strip inline styles so fixed children
