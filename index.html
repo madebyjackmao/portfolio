@@ -23,7 +23,8 @@
   <meta name="theme-color" content="#ccff00"/>
   <script>
     // Synchronous: hide splash before first paint when navigating back
-    if (window.location.hash === '#work') {
+    if (window.location.hash === '#work' ||
+        (document.referrer && document.referrer.includes('/projects/'))) {
       document.documentElement.classList.add('skip-splash');
     }
   </script>
@@ -1379,7 +1380,7 @@
         <a href="projects/light-and-form.html" style="text-decoration:none; color:inherit; display:block;">
         <div class="project-card">
           <div class="project-thumb-wrap">
-            <img src="images/thumb-light-form.png" alt="Light &amp; Form — symmetry illustration study" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;display:block;"/>
+            <img src="images/thumb-light-form.png" alt="Light &amp; Form — symmetry illustration study" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"/>
           </div>
           <div class="project-info">
             <div>
@@ -1393,7 +1394,7 @@
         <a href="projects/chronicles-of-elysium.html" style="text-decoration:none; color:inherit; display:block;">
         <div class="project-card">
           <div class="project-thumb-wrap">
-            <img src="images/thumb-chronicles.png" alt="Chronicles of Elysium — game design hex map" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;display:block;"/>
+            <img src="images/thumb-chronicles.png" alt="Chronicles of Elysium — game design hex map" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"/>
           </div>
           <div class="project-info">
             <div>
@@ -1442,12 +1443,11 @@
             </div>
           </div>
         </div>
-      </div>
 
         <a href="projects/toronto-in-bloom.html" style="text-decoration:none; color:inherit; display:block;">
         <div class="project-card fade-up" data-delay="4">
           <div class="project-thumb-wrap">
-            <img src="images/thumb-toronto-bloom.png" alt="Toronto in Bloom — cherry blossoms" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;display:block;"/>
+            <img src="images/thumb-toronto-bloom.png" alt="Toronto in Bloom — cherry blossoms" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"/>
           </div>
           <div class="project-info">
             <div>
@@ -1458,6 +1458,7 @@
           </div>
         </div>
         </a>
+      </div>
 
       <p class="work-footer-line" style="margin-top:3rem;">Design thinking made thoughtfully.</p>
     </section>
@@ -1715,10 +1716,13 @@
       // Splash already hidden by head script — ensure main visible
       main.classList.add('visible');
       document.getElementById('work').scrollIntoView({ behavior: 'instant' });
-      // Reveal hero words immediately (no splash on back-nav)
-      document.querySelectorAll('.word-reveal').forEach(
-        el => el.classList.add('is-visible'));
-      // Start all scroll observers so fade-up and parallax run normally
+      // Reveal all animated elements immediately — no entrance animation on back-nav
+      document.querySelectorAll('.word-reveal').forEach(el => el.classList.add('is-visible'));
+      document.querySelectorAll('.fade-up').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      // Start scroll observers for elements below the fold
       startRevealObserver();
     }
 
