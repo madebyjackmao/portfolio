@@ -216,11 +216,13 @@
     hr.div { border: none; border-top: 1px solid rgba(255,255,255,.07); margin: 3rem 0; }
 
     .next-project {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 3rem; background: var(--navy2);
+      padding: 5rem 3rem;
       border-top: 1px solid rgba(255,255,255,.06);
+      display: flex; align-items: center; justify-content: space-between;
       text-decoration: none; color: var(--white);
-      transition: background .3s; cursor: none; will-change: transform;
+      transition: background .3s; cursor: none;
+      backdrop-filter: var(--glass-blur-sm); -webkit-backdrop-filter: var(--glass-blur-sm);
+      will-change: transform;
     }
     .next-project:hover { background: rgba(22,21,43,.8); }
     .next-label {
@@ -434,7 +436,7 @@
   <footer>
     <span>Jack Mao</span>
     <span>© 2026 — All rights reserved</span>
-    <span>Toronto in Bloom</span>
+    <span>Built with ♥ + Figma</span>
   </footer>
 
   <script>
