@@ -380,11 +380,17 @@ img.loaded { opacity: 1; }
     }
   
     /* ── Page transition ── */
-    body { transition: opacity 0.25s ease; }
-    body.is-leaving { opacity: 0; }</style>
+    #page-veil {
+      position: fixed; inset: 0; z-index: 99999;
+      background: #0f0e1a;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    #page-veil.visible { opacity: 1; pointer-events: all; }</style>
 </head>
 <body style="touch-action: pan-y;">
   <div class="cursor" id="cursor"></div>
+  <div id="page-veil"></div>
 
   <nav>
     <a class="nav-logo" href="../index.html#work">Jack Mao <span>/</span> Portfolio</a>
@@ -636,14 +642,26 @@ img.loaded { opacity: 1; }
   
     // ── Page transition ──
     (function() {
+      var veil = document.getElementById('page-veil');
+      if (veil) {
+        veil.style.transition = 'none';
+        veil.classList.add('visible');
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            veil.style.transition = '';
+            veil.classList.remove('visible');
+          });
+        });
+      }
       document.querySelectorAll('a[href]').forEach(function(a) {
         var href = a.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto')
             || href.startsWith('http') || a.getAttribute('target') === '_blank') return;
         a.addEventListener('click', function(e) {
           e.preventDefault();
-          document.body.classList.add('is-leaving');
-          setTimeout(function() { window.location.href = href; }, 260);
+          if (!veil) { window.location.href = href; return; }
+          veil.classList.add('visible');
+          setTimeout(function() { window.location.href = href; }, 370);
         });
       });
     })();</script>
