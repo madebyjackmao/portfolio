@@ -335,25 +335,7 @@
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
     }
-    #page-veil.visible { opacity: 1; pointer-events: all; }
-    /* ── Replay button ── */
-    #blossom-wrap { position: relative; }
-    .replay-btn {
-      position: absolute; inset: 0;
-      display: none;
-      align-items: center; justify-content: center;
-      gap: .5rem;
-      background: rgba(10,9,18,.6);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      border: none; border-radius: 12px;
-      font-family: 'Syne', sans-serif; font-size: .78rem;
-      font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: rgba(255,255,255,.8);
-      cursor: none;
-      transition: background .2s, color .2s;
-    }
-    .replay-btn.visible { display: flex; }
-    .replay-btn:hover { background: rgba(10,9,18,.8); color: var(--lime); }</style>
+    #page-veil.visible { opacity: 1; pointer-events: all; }</style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -398,74 +380,6 @@
     </div>
 
     <div class="pull-quote">"Two weeks. Every year. Most people miss it."</div>
-
-    <div class="section-heading">Footage</div>
-    <div class="body-text">
-      <p>One clip from the 2026 season — captured during peak bloom on iPhone. Shot in Cinematic mode with a shallow depth of field, leaning on the camera's natural colour science rather than heavy post — letting the blossoms hold their own against the flat spring sky.</p>
-    </div>
-
-    <div class="blossom-videos">
-      <div class="video-wrap" id="blossom-wrap">
-        <video id="blossom-video" autoplay muted playsinline preload="auto">
-          <source src="../images/blossom-2.mp4" type="video/mp4"/>
-        </video>
-        <button class="replay-btn" id="replay-btn" aria-label="Replay video">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.5 10A6.5 6.5 0 0 1 10 3.5c2.1 0 3.97.99 5.18 2.53M16.5 10A6.5 6.5 0 0 1 10 16.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M14.5 3l1.68 3.03-3.03 1.68" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Replay
-        </button>
-      </div>
-    </div>
-
-    <hr class="div"/>
-
-    <div class="section-heading">Inspiration</div>
-    <div class="body-text">
-      <p><strong>Dave Krugman</strong> — NYC street photographer, founder of ALLSHIPS — documents bloom season in Central Park the same way we approached High Park: finding the human moment inside the spectacle.</p>
-    </div>
-
-    <div class="pull-quote">"Everyone comes to the same place, at the same time, every year. That's the shot."</div>
-
-    <div class="blossom-videos">
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="../images/dave-krugman-1.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="../images/dave-krugman-2.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="../images/dave-krugman-3.mp4" type="video/mp4"/>
-        </video>
-      </div>
-    </div>
-
-    <div class="comments-block">
-      <div class="comment">
-        <span class="comment-handle">@stephaniecrown</span>
-        <span class="comment-text">These are so, so nice</span>
-      </div>
-      <div class="comment">
-        <span class="comment-handle">@ola_wilk</span>
-        <span class="comment-text">Loving these 🌸🍃</span>
-      </div>
-      <div class="comment">
-        <span class="comment-handle">@kariroy_</span>
-        <span class="comment-text">Love the longer cuts / it's also a surprise to swipe and see the longer cuts instead of what you typically expect in that format (still images etc)</span>
-      </div>
-    </div>
-
-    <div class="body-text">
-      <p style="font-family:'DM Mono',monospace; font-size:.68rem; color:rgba(255,255,255,.25); margin-top:.5rem;">
-        Via <a href="https://www.instagram.com/p/DXXRf3aEbhZ/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.35);">@dave.krugman on Instagram</a>. All rights belong to Dave Krugman.
-      </p>
-    </div>
 
     <div class="section-heading">Social Posts</div>
     <div class="body-text">
@@ -519,11 +433,59 @@
       </div>
     </div>
 
+    <div class="section-heading">Inspiration</div>
+    <div class="body-text">
+      <p>The same instinct that drove these four posts has a clear reference point: <strong>Dave Krugman</strong> — NYC street photographer, founder of ALLSHIPS — and his documentation of bloom season in Central Park. His approach is patient and crowd-aware, finding the human moment inside the spectacle rather than shooting around it. Seeing his work made it clear what High Park could look like treated the same way.</p>
+    </div>
+
+    <div class="pull-quote">"Everyone comes to the same place, at the same time, every year. That's the shot."</div>
+
+    <div class="blossom-videos">
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../images/dave-krugman-1.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../images/dave-krugman-2.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="../images/dave-krugman-3.mp4" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+
+    <div class="comments-block">
+      <div class="comment">
+        <span class="comment-handle">@stephaniecrown</span>
+        <span class="comment-text">These are so, so nice</span>
+      </div>
+      <div class="comment">
+        <span class="comment-handle">@ola_wilk</span>
+        <span class="comment-text">Loving these 🌸🍃</span>
+      </div>
+      <div class="comment">
+        <span class="comment-handle">@kariroy_</span>
+        <span class="comment-text">Love the longer cuts / it's also a surprise to swipe and see the longer cuts instead of what you typically expect in that format (still images etc)</span>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p style="font-family:'DM Mono',monospace; font-size:.68rem; color:rgba(255,255,255,.25); margin-top:.5rem;">
+        Via <a href="https://www.instagram.com/p/DXXRf3aEbhZ/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.35);">@dave.krugman on Instagram</a>. All rights belong to Dave Krugman.
+      </p>
+    </div>
+
+    <hr class="div"/>
+
     <div class="section-heading">By the Numbers</div>
     <div class="stat-row">
       <div class="stat"><div class="stat-num">2 wks</div><div class="stat-label">Bloom window</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Video clips</div></div>
       <div class="stat"><div class="stat-num">4</div><div class="stat-label">Grid posts</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Video clips</div></div>
       <div class="stat"><div class="stat-num">10.3K</div><div class="stat-label">Total likes</div></div>
     </div>
 
