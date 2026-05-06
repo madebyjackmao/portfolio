@@ -207,7 +207,7 @@
       display: flex; align-items: center; justify-content: center;
       font-size: clamp(2rem,6vw,4rem);
     }
-    .social-footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; font-size: .75rem; color: var(--purple-light); font-family: 'DM Mono', monospace; }
+    .social-footer { padding: .75rem 1rem; font-family: 'DM Mono', monospace; font-size: .65rem; color: rgba(255,255,255,.4); }
     .social-likes { color: var(--bloom); font-weight: 700; font-size: .72rem; margin-bottom: .25rem; }
 
     .pull-quote {
@@ -331,7 +331,7 @@
     /* ── Page transition ── */
     #page-veil {
       position: fixed; inset: 0; z-index: 99999;
-      background: #0f0e1a;
+      background: #120010;
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
     }
@@ -389,17 +389,7 @@
     <div class="blossom-videos">
       <div class="video-wrap">
         <video autoplay loop muted playsinline preload="auto">
-          <source src="../images/blossom-1.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto">
           <source src="../images/blossom-2.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="video-wrap">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="../images/blossom-3.mp4" type="video/mp4"/>
         </video>
       </div>
     </div>
