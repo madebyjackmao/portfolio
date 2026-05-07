@@ -375,7 +375,14 @@
       @page { margin: 2cm; }
     }
     /* ── Content visibility optimisation ── */
-    .project-content { content-visibility: auto; contain-intrinsic-size: 0 2000px; }</style>
+    .project-content { content-visibility: auto; contain-intrinsic-size: 0 2000px; }
+    /* ── Mobile tap targets ── */
+    @media (max-width: 768px) and (pointer: coarse) {
+      .nav-back, .nav-logo { min-height: 44px; display: inline-flex; align-items: center; }
+      .nav-dropdown-btn { min-height: 44px; }
+      .nav-dropdown-menu a { min-height: 44px; display: flex; align-items: center; }
+      .next-project { min-height: 44px; }
+    }</style>
   <link rel="canonical" href="https://hellojackmao.com/projects/toronto-in-bloom.html"/>
 
   <script type="application/ld+json">
@@ -529,7 +536,7 @@
 
     <div class="body-text">
       <p style="font-family:'DM Mono',monospace; font-size:.68rem; color:rgba(255,255,255,.25); margin-top:.5rem;">
-        Via <a href="https://www.instagram.com/p/DXXRf3aEbhZ/" target="_blank" rel= noopener noreferrer" style="color:rgba(255,255,255,.35);">@dave.krugman on Instagram</a>. All rights belong to Dave Krugman.
+        Via <a href="https://www.instagram.com/p/DXXRf3aEbhZ/" target="_blank" rel= noopener noreferrer" style="color:rgba(255,255,255,.35);" aria-label="View Dave Krugman on Instagram (opens in new tab)">@dave.krugman on Instagram ↗</a>. All rights belong to Dave Krugman.
       </p>
     </div>
 

@@ -16,6 +16,10 @@
   <meta property="og:image:alt" content="Chronicles of Elysium — Game design project by Jack Mao"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Chronicles of Elysium | Jack Mao"/>
+  <meta name="twitter:description" content="Video game design project built on the Hero's Journey · 2023 · Jack Mao"/>
+  <meta name="twitter:image" content="https://hellojackmao.com/images/thumb-chronicles.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Chronicles of Elysium | Jack Mao"/>
   <meta name="twitter:image" content="../icon-512.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="icon" type="image/x-icon" href="../favicon.ico"/>
@@ -431,6 +435,13 @@ img.loaded { opacity: 1; }
       .body-text, .project-intro, p { color: #333 !important; }
       img { max-width: 100% !important; }
       @page { margin: 2cm; }
+    }
+    /* ── Mobile tap targets ── */
+    @media (max-width: 768px) and (pointer: coarse) {
+      .nav-back, .nav-logo { min-height: 44px; display: inline-flex; align-items: center; }
+      .nav-dropdown-btn { min-height: 44px; }
+      .nav-dropdown-menu a { min-height: 44px; display: flex; align-items: center; }
+      .next-project { min-height: 44px; }
     }</style>
   <link rel="canonical" href="https://hellojackmao.com/projects/chronicles-of-elysium.html"/>
 
