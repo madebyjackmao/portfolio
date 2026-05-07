@@ -313,41 +313,45 @@ img.loaded { opacity: 1; }
 
 
     .nav-dropdown { position: relative; }
+
     .nav-dropdown-btn {
       font-family: 'Syne', sans-serif;
       font-size: .78rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; color: rgba(255,255,255,.5);
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-blur-sm); -webkit-backdrop-filter: var(--glass-blur-sm);
-      border: 1px solid var(--glass-border); border-top-color: var(--glass-border-top);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 100px; padding: .45rem 1rem;
       cursor: none; transition: color .2s, border-color .2s;
+    }
+    .nav-dropdown-btn:hover { color: var(--lime); border-color: var(--lime); }
+    .nav-dropdown-btn::after { content: "▾"; font-size: .6rem; }
 
-      :root {
-        --glass-bg: rgba(255,255,255,0.04);
-        --glass-bg-hover: rgba(255,255,255,0.07);
-        --glass-border: rgba(255,255,255,0.09);
-        --glass-border-top: rgba(255,255,255,0.16);
-        --glass-blur: blur(18px) saturate(160%);
-        --glass-blur-sm: blur(10px) saturate(140%);
-        --glass-shine: linear-gradient(135deg,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.02) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.05) 100%);
-        --glass-shadow: 0 6px 24px rgba(0,0,0,0.28),0 1px 0 rgba(255,255,255,0.06) inset,0 -1px 0 rgba(0,0,0,0.15) inset;
-        --glass-shadow-card: 0 12px 36px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.07) inset,0 -1px 0 rgba(0,0,0,0.18) inset;
-      }
+    .active-page {
+      display: block; font-family: 'Syne', sans-serif;
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--lime);
+      padding: .5rem 1rem; margin: .25rem .25rem .1rem;
+      background: rgba(204,255,0,0.07);
+      border: 1px solid rgba(204,255,0,0.2);
+      border-radius: 8px; pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
       nav {
         top: 0.75rem; left: 50%; right: auto;
         transform: translateX(-50%);
-        width: calc(100% - 2rem);
-        border-radius: 100px; padding: 0.85rem 1.25rem;
-        background: rgba(15,14,26,0.45);
-        backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-        border: 1px solid var(--glass-border);
-        border-top-color: var(--glass-border-top);
-        box-shadow: var(--glass-shadow);
+        width: calc(100% - 2rem); max-width: 560px;
+        border-radius: 100px; padding: .85rem 1.25rem;
+        background: rgba(15,14,26,.45);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        border: 1px solid rgba(255,255,255,.09);
+        border-top-color: rgba(255,255,255,.16);
+        box-shadow: 0 6px 24px rgba(0,0,0,.28);
         border-bottom: none;
-              max-width: 560px;
       }
-      .project-hero { padding-top: 6rem; }
+      .nav-logo { font-size: .85rem; }
+      .nav-dropdown-btn { padding: .4rem .8rem; font-size: .72rem; }
     }</style>
   <link rel="canonical" href="https://hellojackmao.com/projects/light-and-form.html"/>
 

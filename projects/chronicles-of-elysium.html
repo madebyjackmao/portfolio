@@ -226,42 +226,18 @@ footer {padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:fle
 
 
     .nav-dropdown { position: relative; }
+
     .nav-dropdown-btn {
       font-family: 'Syne', sans-serif;
       font-size: .78rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; color: rgba(255,255,255,.5);
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-blur-sm); -webkit-backdrop-filter: var(--glass-blur-sm);
-      border: 1px solid var(--glass-border); border-top-color: var(--glass-border-top);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 100px; padding: .45rem 1rem;
       cursor: none; transition: color .2s, border-color .2s;
     }
-    .nav-dropdown-btn:hover { color: var(--lime); border-color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
-    }
-    .nav-dropdown-btn::after { content: "▾"; font-size: .6rem; }
-    .nav-dropdown-menu {
-      position: absolute; top: calc(100% + .5rem); right: 0; min-width: 240px;
-      opacity: 0; visibility: hidden; transform: translateY(-8px);
-      transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
-      z-index: 200;
-      backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
-      background: rgba(15,14,26,.9);
-      border: 1px solid rgba(255,255,255,.1); border-radius: 14px;
-      padding: .5rem;
-      box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.08) inset;
-    }
-    .nav-dropdown.open .nav-dropdown-menu {opacity:1;visibility:visible;transform:translateY(0);}
-    .nav-dropdown-menu a {
-      display: block; font-family: 'Syne', sans-serif;
-      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: rgba(255,255,255,.6);
-      text-decoration: none; padding: .65rem 1rem;
-      border-radius: 8px; white-space: nowrap;
-      transition: background .15s, color .15s;
-    }
-    .nav-dropdown-menu a:hover { background: rgba(255,255,255,.06); color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
-    }
-    .nav-dropdown-menu .active-page {
+
+    .active-page {
       display: block; font-family: 'Syne', sans-serif;
       font-size: .75rem; font-weight: 700; letter-spacing: .08em;
       text-transform: uppercase; color: var(--lime);
@@ -272,110 +248,27 @@ footer {padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:fle
       border-radius: 8px;
       pointer-events: none;
     }
-    .nav-dropdown-divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: .3rem .75rem; }
-    
 
-/* ═══════════════════════════════════════
-       V2 MOBILE (≤768px) — liquid glass on
-    ═══════════════════════════════════════ */
-
-
-
-/* ── Keyboard focus accessibility ── */
-
-:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; border-radius: 4px; }
-
-a:focus-visible, button:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; border-radius: 6px; }
-
-:focus:not(:focus-visible) { outline: none; }
-
-/* ── Global smoothness ── */
-
-
-
-/* ── Scroll reveal ── */
-
-.reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    @media (max-width: 768px) {
+      nav {
+        top: 0.75rem; left: 50%; right: auto;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem); max-width: 560px;
+        border-radius: 100px;
+        padding: .85rem 1.25rem;
+        background: rgba(15,14,26,.45);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        border: 1px solid rgba(255,255,255,.09);
+        border-top-color: rgba(255,255,255,.16);
+        box-shadow: 0 6px 24px rgba(0,0,0,.28);
+        border-bottom: none;
+      }
+      .nav-logo { font-size: .85rem; }
+      .nav-dropdown-btn { padding: .4rem .8rem; font-size: .72rem; }
     }
 
-.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.reveal:nth-child(2) { transition-delay: 0.08s; }
-
-.reveal:nth-child(3) { transition-delay: 0.16s; }
-
-/* ── Card hover states ── */
-
-.mechanic-card, .ideology-card, .campaign-card, .act-card {
-      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
-                  border-color 0.25s, background 0.25s, box-shadow 0.25s;
-      cursor: none;
-    }
-
-.mechanic-card:hover, .ideology-card:hover,
-    .campaign-card:hover, .act-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(123,108,246,0.3);
-      background: rgba(123,108,246,0.06);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-          transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
-    }
-
-/* ── Section heading fade-in ── */
-
-    .project-intro {
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      font-weight: 700;
-      line-height: 1.6;
-      color: var(--white);
-      margin-bottom: 3rem;
-      padding-left: 1.5rem;
-      border-left: 3px solid #d4af37;
-    }
-.section-heading {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--lime);
-      margin-bottom: 1.25rem;
-      margin-top: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: color 0.2s;
-    }
-
-/* ── Img lazy load fade ── */
-
-img {
-      height: auto;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-img.loaded { opacity: 1; }
-
-/* kassandra keyart — portrait image, constrain width */
-
-.image-grid img[src*="kassandra-keyart"] {
-      max-width: 480px;
-      margin: 0 auto;
-      display: block;
-    }
-  
-    /* ── Page transition ── */
-    #page-veil {
-      position: fixed; inset: 0; z-index: 99999;
-      background: #0f0e1a;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
-    }
-    #page-veil.visible { opacity: 1; pointer-events: all; }
     @media (prefers-reduced-motion: reduce) {
       #page-veil { transition: none; }
     }
