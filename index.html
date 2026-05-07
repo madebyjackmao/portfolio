@@ -86,7 +86,6 @@
       font-family: 'Syne', sans-serif;
       background: var(--navy);
       color: var(--white);
-      cursor: none;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -1115,6 +1114,11 @@
     /* ══════════════════════════════════════
        V2 MOBILE (≤768px) — liquid glass on
     ══════════════════════════════════════ */
+    
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, [role="button"] { cursor: none; }
+    }
     @media (max-width: 768px) {
       :root {
         --glass-bg: rgba(255,255,255,0.04);
@@ -1306,11 +1310,29 @@
     }
     @media (max-width: 768px) {
       .form-row { grid-template-columns: 1fr; }
-    }</style>
+    }
+    /* ── Skip to content ── */
+    .skip-to-content {
+      position: absolute; top: -100px; left: 1rem; z-index: 99999;
+      padding: .5rem 1rem; background: var(--lime); color: #111;
+      font-family: 'Syne', sans-serif; font-size: .85rem; font-weight: 700;
+      border-radius: 0 0 8px 8px; text-decoration: none;
+      transition: top .2s;
+    }
+    .skip-to-content:focus { top: 0; }
+    .about-skill-soon { opacity: .45; font-style: italic; }
+    .form-char-count {
+      font-family: 'DM Mono', monospace; font-size: .65rem;
+      color: rgba(255,255,255,.25); text-align: right;
+      margin-top: .2rem; transition: color .2s;
+    }
+    .form-char-count.near-limit { color: var(--coral); }</style>
+  <link rel="canonical" href="https://hellojackmao.com/"/>
 </head>
 <body style="touch-action: pan-y;">
 
   <!-- Custom cursor -->
+  <a href="#work" class="skip-to-content">Skip to content</a>
   <div class="cursor" id="cursor"></div>
   <div id="page-veil"></div>
 
@@ -1325,7 +1347,7 @@
   </div>
 
   <!-- ── MAIN ── -->
-  <div id="main">
+  <main id="main">
 
     <!-- Nav -->
     <nav>
@@ -1338,7 +1360,7 @@
     </nav>
 
     <!-- Hero -->
-    <section id="hero">
+    <section id="hero" aria-label="Introduction">
       <!-- Parallax background layer — JS drives translateY via scroll -->
       <div id="parallax-bg" aria-hidden="true" style="position:absolute;inset:0;background:inherit;will-change:transform;pointer-events:none;z-index:0;"></div>
       <div class="hero-bg-text">JM</div>
@@ -1386,7 +1408,7 @@
     <div class="gradient-divider" aria-hidden="true"></div>
 
     <!-- Work -->
-    <section id="work">
+    <section id="work" aria-label="Selected work">
       <div class="section-label fade-up">Selected Work</div>
 
       <!-- Categories -->
@@ -1509,12 +1531,12 @@
       </svg>
     </div>
 
-    <section id="about">
+    <section id="about" aria-label="About me">
       <div class="about-inner">
         <div class="about-left">
           <div class="about-label">About me</div>
           <h2 class="about-name">Jack<br><em>Mao</em></h2>
-          <p class="about-bio fade-up">I'm a designer and illustrator based in Toronto, working across illustration, editorial design, branding, and advertising. I hold a BA in Creative Industries from Toronto Metropolitan University — a degree that sits at the intersection of business, law, and creative practice.</p>
+          <p class="about-bio fade-up">I'm a designer and illustrator based in Toronto, working across illustration, editorial design, and advertising. I hold a BA in Creative Industries from Toronto Metropolitan University — a degree that sits at the intersection of business, law, and creative practice.</p>
           <p class="about-bio fade-up" style="margin-top:0.9rem;transition-delay:0.12s">Right now I'm looking for my first full-time role in a creative studio or in-house team. I'm drawn to work that takes a position — design that has a reason for every decision.</p>
           <div class="skills-grid">
             <div class="skill-pill fade-up" data-delay="1">Illustration</div>
@@ -1603,7 +1625,7 @@
     <!-- Animated divider -->
     <div class="gradient-divider" aria-hidden="true"></div>
 
-    <section id="contact">
+    <section id="contact" aria-label="Contact">
       <div class="contact-bg"></div>
       <div class="contact-inner fade-up">
         <div class="contact-label">✦ Let's connect</div>
@@ -1633,10 +1655,11 @@
             </div>
             <div class="form-field">
               <label class="form-label" for="cf-message">Message</label>
-              <textarea class="form-input form-textarea" id="cf-message" name="message" placeholder="Tell me about your project…" rows="4" required data-fs-field></textarea>
+              <textarea class="form-input form-textarea" id="cf-message" name="message" placeholder="Tell me about your project…" rows="4" maxlength="600" required data-fs-field></textarea>
+            <div class="form-char-count"><span id="cf-char-count">0</span> / 600</div>
               <span class="form-field-error" data-fs-error="message"></span>
             </div>
-            <button class="form-submit" type="submit" data-fs-submit-btn>
+            <button class="form-submit" type="submit" data-fs-submit-btn aria-label="Send message">
               <span class="form-submit-label">Send message</span>
               <span class="form-submit-arrow">→</span>
             </button>
@@ -1908,6 +1931,18 @@
           veil.classList.add('visible');
           setTimeout(function() { window.location.href = href; }, 370);
         });
+      });
+    })();
+    // ── Textarea character counter ──
+    (function() {
+      var ta  = document.getElementById('cf-message');
+      var cnt = document.getElementById('cf-char-count');
+      var wrap = cnt ? cnt.closest('.form-char-count') : null;
+      if (!ta || !cnt) return;
+      ta.addEventListener('input', function() {
+        var len = ta.value.length;
+        cnt.textContent = len;
+        if (wrap) wrap.classList.toggle('near-limit', len > 540);
       });
     })();</script>
 
