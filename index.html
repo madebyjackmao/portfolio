@@ -12,6 +12,7 @@
   <meta property="og:title" content="Jack Mao | Portfolio 2026"/>
   <meta property="og:description" content="Toronto-based designer and illustrator. Illustration · Branding · Game Design · Editorial."/>
   <meta property="og:image" content="https://hellojackmao.com/images/thumb-light-form.png"/>
+  <meta property="og:image:alt" content="Jack Mao Portfolio 2026 — Design & Illustration, Toronto"/>
   <meta property="og:image:width" content="1400"/>
   <meta property="og:image:height" content="788"/>
   <meta property="og:site_name" content="Jack Mao Portfolio"/>
@@ -1326,12 +1327,27 @@
       color: rgba(255,255,255,.25); text-align: right;
       margin-top: .2rem; transition: color .2s;
     }
-    .form-char-count.near-limit { color: var(--coral); }</style>
+    .form-char-count.near-limit { color: var(--coral); }
+    /* ── Scroll progress bar ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 99998;
+      height: 2px; width: 0%; background: var(--lime);
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+    /* ── Focus ring ── */
+    :focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    :focus:not(:focus-visible) { outline: none; }</style>
   <link rel="canonical" href="https://hellojackmao.com/"/>
 </head>
 <body style="touch-action: pan-y;">
 
   <!-- Custom cursor -->
+  <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
   <a href="#work" class="skip-to-content">Skip to content</a>
   <div class="cursor" id="cursor"></div>
   <div id="page-veil"></div>
@@ -1553,7 +1569,7 @@
         </div>
         <div class="about-right">
           <div class="about-photo-card">
-            <img src="images/profile.jpg" alt="Jack Mao" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+            <img src="images/profile.jpg" alt="Jack Mao" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
             <div class="about-badge fade-up">
               Toronto, ON<br>
               <small>Available for work</small>
@@ -1944,6 +1960,16 @@
         cnt.textContent = len;
         if (wrap) wrap.classList.toggle('near-limit', len > 540);
       });
+    })();
+    // ── Scroll progress ──
+    (function() {
+      var bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      window.addEventListener('scroll', function() {
+        var s = document.documentElement;
+        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+        bar.style.width = Math.min(pct, 100) + '%';
+      }, { passive: true });
     })();</script>
 
 </body>
