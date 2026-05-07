@@ -49,7 +49,6 @@
       background: var(--navy);
       color: var(--white);
       overflow-x: hidden;
-      cursor: none;
       -webkit-font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -202,7 +201,12 @@ hr.div {border:none;border-top:1px solid rgba(255,255,255,.06);margin:3rem 0;}
 
 footer {padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--purple-light);font-family:'DM Mono',monospace;}
 
-@media(max-width:768px){
+
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, [role="button"] { cursor: none; }
+    }
+    @media(max-width:768px){
   
       .project-hero{padding:8rem 1.5rem 4rem;}
       .project-content{padding:4rem 1.5rem;}
@@ -395,7 +399,11 @@ img.loaded { opacity: 1; }
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
     }
-    #page-veil.visible { opacity: 1; pointer-events: all; }</style>
+    #page-veil.visible { opacity: 1; pointer-events: all; }
+    @media (prefers-reduced-motion: reduce) {
+      #page-veil { transition: none; }
+    }</style>
+  <link rel="canonical" href="https://hellojackmao.com/projects/chronicles-of-elysium.html"/>
 </head>
 <body style="touch-action: pan-y;">
   <div class="cursor" id="cursor"></div>
@@ -405,7 +413,7 @@ img.loaded { opacity: 1; }
     <a class="nav-logo" href="../index.html#work">Jack Mao <span>/</span> Portfolio</a>
     <a class="nav-back" href="../index.html#work">← Back to work</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">Projects</button>
+      <button class="nav-dropdown-btn" aria-label="Open project navigation" aria-expanded="false">Projects</button>
       <div class="nav-dropdown-menu">
         <span class="active-page">Chronicles of Elysium</span>
         <hr class="nav-dropdown-divider"/>
@@ -417,11 +425,12 @@ img.loaded { opacity: 1; }
     </div>
   </nav>
 
+  <main>
   <!-- HERO -->
   <div class="project-hero">
     <div class="hero-content">
       <div class="edition-tag">Game Design · RTA928</div>
-      <div class="hero-title">Chronicles of<br>Elysium</div>
+      <h1 class="hero-title">Chronicles of<br>Elysium</h1>
       <div class="hero-subtitle-text">The Quest for Harmony</div>
       <div class="hero-meta">
         <div class="hero-meta-item">Category — <span>Video Game Design</span></div>
@@ -553,6 +562,7 @@ img.loaded { opacity: 1; }
 
   </div>
 
+  </main>
   <a class="next-project" href="so-good.html">
     <div><div class="next-label">Next project</div><div class="next-title">Special Edition ft. Zara Larsson</div></div>
     <div class="next-arrow">→</div>

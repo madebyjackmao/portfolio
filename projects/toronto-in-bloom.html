@@ -22,6 +22,8 @@
   <meta name="twitter:title" content="Toronto in Bloom | Jack Mao"/>
   <meta name="twitter:description" content="Social media — cherry blossom season at High Park, 2026."/>
   <meta name="twitter:image" content="https://hellojackmao.com/images/toronto-bloom-canopy.jpeg"/>
+  <link rel="preload" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uQ.ttf" as="font" type="font/ttf" crossorigin/>
+  <link rel="preload" href="https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYvrumztJS.ttf" as="font" type="font/ttf" crossorigin/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -44,7 +46,7 @@
     body {
       font-family: 'Syne', sans-serif;
       background: var(--navy); color: var(--white);
-      overflow-x: hidden; cursor: none;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       line-height: 1.6; touch-action: pan-y;
     }
@@ -275,6 +277,11 @@
     }
 
     /* ══ V2 MOBILE (≤768px) ══ */
+    
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, [role="button"] { cursor: none; }
+    }
     @media (max-width: 768px) {
       :root {
         --glass-bg: rgba(255,255,255,.04);
@@ -335,7 +342,11 @@
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
     }
-    #page-veil.visible { opacity: 1; pointer-events: all; }</style>
+    #page-veil.visible { opacity: 1; pointer-events: all; }
+    @media (prefers-reduced-motion: reduce) {
+      #page-veil { transition: none; }
+    }</style>
+  <link rel="canonical" href="https://hellojackmao.com/projects/toronto-in-bloom.html"/>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -345,7 +356,7 @@
     <a class="nav-logo" href="../index.html#work">Jack Mao <span>/</span> Portfolio</a>
     <a class="nav-back" href="../index.html#work">← Back to work</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">Projects</button>
+      <button class="nav-dropdown-btn" aria-label="Open project navigation" aria-expanded="false">Projects</button>
       <div class="nav-dropdown-menu">
         <span class="active-page">Toronto in Bloom</span>
         <hr class="nav-dropdown-divider"/>
@@ -357,6 +368,7 @@
     </div>
   </nav>
 
+  <main>
   <div class="project-hero">
     <div class="project-meta">
       <div><span class="meta-label">Category</span><span class="meta-value">Social Media</span></div>
@@ -394,7 +406,7 @@
         </div>
         <img class="social-img" src="../images/DSCF6080.jpeg" alt="Toronto cherry blossoms" loading="lazy"/>
         <div class="social-footer">
-          <div class="social-likes">2,847 likes</div>
+          <div class="social-likes">124 likes</div>
           <div>Everyone comes to the same tree. Every year. #HighPark #TorontoInBloom #CherryBlossom</div>
         </div>
       </div>
@@ -405,7 +417,7 @@
         </div>
         <img class="social-img" src="../images/DSCF6086.jpeg" alt="Toronto cherry blossoms" loading="lazy"/>
         <div class="social-footer">
-          <div class="social-likes">1,923 likes</div>
+          <div class="social-likes">89 likes</div>
           <div>Two weeks a year, this is what High Park looks like. #Toronto #Spring2026</div>
         </div>
       </div>
@@ -416,7 +428,7 @@
         </div>
         <img class="social-img" src="../images/DSCF6106.jpeg" alt="Toronto cherry blossoms" loading="lazy"/>
         <div class="social-footer">
-          <div class="social-likes">3,401 likes</div>
+          <div class="social-likes">203 likes</div>
           <div>Everyone is making a memory here. #TorontoInBloom #HighPark #Spring</div>
         </div>
       </div>
@@ -427,7 +439,7 @@
         </div>
         <img class="social-img" src="../images/DSCF6113.jpeg" alt="Toronto cherry blossoms" loading="lazy"/>
         <div class="social-footer">
-          <div class="social-likes">2,156 likes</div>
+          <div class="social-likes">97 likes</div>
           <div>The other side of bloom season — the pond, the willows, the quiet spots. #Toronto #HighPark</div>
         </div>
       </div>
@@ -499,6 +511,7 @@
 
   </div>
 
+  </main>
   <a class="next-project" href="light-and-form.html">
     <div><div class="next-label">Next project</div><div class="next-title">Light &amp; Form</div></div>
     <div class="next-arrow">→</div>

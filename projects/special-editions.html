@@ -22,6 +22,8 @@
   <meta name="twitter:title" content="Special Editions | Jack Mao"/>
   <meta name="twitter:description" content="Two editorial campaigns — Zara Larsson and The Weeknd."/>
   <meta name="twitter:image" content="https://hellojackmao.com/images/thumb-so-good.png"/>
+  <link rel="preload" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uQ.ttf" as="font" type="font/ttf" crossorigin/>
+  <link rel="preload" href="https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYvrumztJS.ttf" as="font" type="font/ttf" crossorigin/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -37,7 +39,7 @@
     body {
       font-family: 'Syne', sans-serif;
       background: var(--navy); color: var(--white);
-      overflow-x: hidden; cursor: none;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       touch-action: pan-y;
     }
@@ -221,6 +223,11 @@
     :focus:not(:focus-visible) { outline: none; }
 
     /* ── V2 Mobile ── */
+    
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, [role="button"] { cursor: none; }
+    }
     @media (max-width: 768px) {
       nav {
         top: .75rem; left: 50%; right: auto; transform: translateX(-50%);
@@ -243,7 +250,11 @@
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
     }
-    #page-veil.visible { opacity: 1; pointer-events: all; }</style>
+    #page-veil.visible { opacity: 1; pointer-events: all; }
+    @media (prefers-reduced-motion: reduce) {
+      #page-veil { transition: none; }
+    }</style>
+  <link rel="canonical" href="https://hellojackmao.com/projects/special-editions.html"/>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -253,7 +264,7 @@
     <a class="nav-logo" href="../index.html#work">Jack Mao <span>/</span> Portfolio</a>
     <a class="nav-back" href="../index.html#work">← Back to work</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">Projects</button>
+      <button class="nav-dropdown-btn" aria-label="Open project navigation" aria-expanded="false">Projects</button>
       <div class="nav-dropdown-menu">
         <span class="active-page">Special Editions</span>
         <hr class="nav-dropdown-divider"/>
@@ -264,7 +275,8 @@
     </div>
   </nav>
 
-  <div class="hub-hero">
+  <main>
+    <div class="hub-hero">
     <div class="hub-eyebrow">Pop Culture · Editorial &amp; Advertising</div>
     <h1 class="hub-title">Special<br><em>Editions</em></h1>
     <p class="hub-intro">Two projects. One design instinct — built around an artist's identity, not imposed on it.</p>
@@ -304,6 +316,7 @@
     </div>
   </div>
 
+  </main>
   <footer>
     <span>Jack Mao</span>
     <span>© 2026 — All rights reserved</span>

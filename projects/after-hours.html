@@ -49,7 +49,6 @@
       background: var(--navy);
       color: var(--white);
       overflow-x: hidden;
-      cursor: none;
       -webkit-font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -198,7 +197,12 @@ hr.div {border:none;border-top:1px solid rgba(255,255,255,.06);margin:3rem 0;}
 
 footer {padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--purple-light);font-family:'DM Mono',monospace;}
 
-@media(max-width:768px){
+
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, [role="button"] { cursor: none; }
+    }
+    @media(max-width:768px){
   
       .project-hero{grid-template-columns:1fr;min-height:auto;padding:8rem 1.5rem 4rem;gap:2rem;}
       .hero-right{align-items:flex-start;text-align:left;}
@@ -376,12 +380,16 @@ img.loaded { opacity: 1; }
       transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
     }
     #page-veil.visible { opacity: 1; pointer-events: all; }
+    @media (prefers-reduced-motion: reduce) {
+      #page-veil { transition: none; }
+    }
     .project-intro {
       font-size: clamp(1.05rem,2vw,1.3rem); font-weight: 700;
       line-height: 1.6; color: var(--white); margin-bottom: 3rem;
       padding-left: 1.5rem; border-left: 3px solid #ff5533;
     }
 </style>
+  <link rel="canonical" href="https://hellojackmao.com/projects/after-hours.html"/>
 </head>
 <body style="touch-action: pan-y;">
   <div class="cursor" id="cursor"></div>
@@ -391,7 +399,7 @@ img.loaded { opacity: 1; }
     <a class="nav-logo" href="../index.html#work">Jack Mao <span>/</span> Portfolio</a>
     <a class="nav-back" href="../index.html#work">← Back to work</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">Projects</button>
+      <button class="nav-dropdown-btn" aria-label="Open project navigation" aria-expanded="false">Projects</button>
       <div class="nav-dropdown-menu">
         <span class="active-page">Special Edition ft. The Weeknd</span>
         <hr class="nav-dropdown-divider"/>
@@ -403,11 +411,12 @@ img.loaded { opacity: 1; }
     </div>
   </nav>
 
+  <main>
   <!-- HERO -->
   <div class="project-hero">
     <div class="hero-left">
       <div class="edition-tag">Special Edition — Vol. 02</div>
-      <div class="hero-issue">After<br>Hours.</div>
+      <h1 class="hero-issue">After<br>Hours.</h1>
       <div class="hero-subtitle">The Weeknd · 2020</div>
       <div class="hero-meta">
         <div class="hero-meta-item">Category — <span>Advertising &amp; Crowd Culture</span></div>
@@ -538,6 +547,7 @@ img.loaded { opacity: 1; }
 
   </div>
 
+  </main>
   <a class="next-project" href="toronto-in-bloom.html">
     <div><div class="next-label">Next project</div><div class="next-title">Toronto in Bloom</div></div>
     <div class="next-arrow">→</div>
