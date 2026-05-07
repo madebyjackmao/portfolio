@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Jack Mao"/>
+  <meta name="theme-color" content="#0f0e1a"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Special Editions | Jack Mao</title>
   <meta name="description" content="Special Editions — two editorial campaigns by Jack Mao. Vol. 01: Zara Larsson. Vol. 02: The Weeknd."/>
@@ -73,7 +77,8 @@
       text-transform: uppercase; color: rgba(255,255,255,.5);
       text-decoration: none; transition: color .2s; cursor: none;
     }
-    .nav-back:hover { color: var(--lime); }
+    .nav-back:hover { color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .nav-dropdown { position: relative; }
     .nav-dropdown-btn {
       font-family: 'Syne', sans-serif;
@@ -84,7 +89,8 @@
       border-radius: 100px; padding: .45rem 1rem;
       cursor: none; transition: color .2s, border-color .2s;
     }
-    .nav-dropdown-btn:hover { color: var(--lime); border-color: var(--lime); }
+    .nav-dropdown-btn:hover { color: var(--lime); border-color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .nav-dropdown-btn::after { content: "▾"; font-size: .6rem; }
     .nav-dropdown-menu {
       position: absolute; top: calc(100% + .5rem); right: 0; min-width: 240px;
@@ -106,7 +112,8 @@
       border-radius: 8px; white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-menu a:hover { background: rgba(255,255,255,.06); color: var(--lime); }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,.06); color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .active-page {
       display: block; font-family: 'Syne', sans-serif;
       font-size: .75rem; font-weight: 700; letter-spacing: .08em;
@@ -161,6 +168,7 @@
       transform: translateY(-4px);
       border-color: rgba(255,255,255,.15);
       box-shadow: 0 24px 60px rgba(0,0,0,.4);
+          transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
     }
     .edition-thumb {
       width: 100%; aspect-ratio: 16/9;
@@ -189,10 +197,12 @@
     .edition-card:hover .edition-arrow { color: var(--lime); }
 
     /* Vol 01 — pink tint on hover */
-    .edition-card.vol-01:hover { border-color: rgba(233,30,140,.3); }
+    .edition-card.vol-01:hover { border-color: rgba(233,30,140,.3);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .edition-card.vol-01:hover .edition-arrow { color: var(--pink); }
     /* Vol 02 — coral tint on hover */
-    .edition-card.vol-02:hover { border-color: rgba(255,85,51,.3); }
+    .edition-card.vol-02:hover { border-color: rgba(255,85,51,.3);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .edition-card.vol-02:hover .edition-arrow { color: var(--coral); }
 
     /* ── Concept section ── */
@@ -254,8 +264,32 @@
     #page-veil.visible { opacity: 1; pointer-events: all; }
     @media (prefers-reduced-motion: reduce) {
       #page-veil { transition: none; }
+    }
+    /* ── Print styles ── */
+    @media print {
+      body { background: #fff !important; color: #000 !important; cursor: auto !important; }
+      nav, .cursor, #page-veil, #scroll-progress, #back-to-top,
+      .next-project, .splash-screen, #splash { display: none !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      h1, h2, h3 { color: #000 !important; }
+      .project-hero { min-height: auto !important; padding: 2rem 0 !important;
+        background: #fff !important; }
+      .body-text, .project-intro, p { color: #333 !important; }
+      img { max-width: 100% !important; }
+      @page { margin: 2cm; }
     }</style>
   <link rel="canonical" href="https://hellojackmao.com/projects/special-editions.html"/>
+
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Special Editions",
+      "creator": { "@type": "Person", "name": "Jack Mao", "url": "https://hellojackmao.com" },
+      "description": "Two editorial and advertising projects built around music artists — Zara Larsson and The Weeknd.",
+      "url": "https://hellojackmao.com/projects/special-editions.html"
+    }
+  </script>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>

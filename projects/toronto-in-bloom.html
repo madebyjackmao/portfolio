@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Jack Mao"/>
+  <meta name="theme-color" content="#0f0e1a"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Toronto in Bloom | Jack Mao</title>
   <meta name="description" content="Toronto in Bloom — a cherry blossom social media project by Jack Mao."/>
@@ -83,7 +87,8 @@
       text-transform: uppercase; color: rgba(255,255,255,.5);
       text-decoration: none; transition: color .2s; cursor: none;
     }
-    .nav-back:hover { color: var(--lime); }
+    .nav-back:hover { color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .nav-dropdown { position: relative; }
     .nav-dropdown-btn {
       font-family: 'Syne', sans-serif;
@@ -95,7 +100,8 @@
       border-radius: 100px; padding: .45rem 1rem;
       cursor: none; transition: color .2s, border-color .2s;
     }
-    .nav-dropdown-btn:hover { color: var(--lime); border-color: var(--lime); }
+    .nav-dropdown-btn:hover { color: var(--lime); border-color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .nav-dropdown-btn::after { content: "▾"; font-size: .6rem; }
     .nav-dropdown-menu {
       position: absolute; top: calc(100% + .5rem); right: 0; min-width: 240px;
@@ -117,7 +123,8 @@
       border-radius: 8px; white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-menu a:hover { background: rgba(255,255,255,.06); color: var(--lime); }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,.06); color: var(--lime);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .nav-dropdown-menu .active-page {
       display: block; font-family: 'Syne', sans-serif;
       font-size: .75rem; font-weight: 700; letter-spacing: .08em;
@@ -184,7 +191,8 @@
       border-radius: 14px; overflow: hidden;
       transition: transform .3s, border-color .3s;
     }
-    .social-post:hover { transform: translateY(-3px); border-color: rgba(192,132,252,.4); }
+    .social-post:hover { transform: translateY(-3px); border-color: rgba(192,132,252,.4);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .social-post-header { display: flex; align-items: center; gap: .65rem; padding: .75rem 1rem; }
     .social-avatar {
       width: 30px; height: 30px; border-radius: 50%;
@@ -245,7 +253,8 @@
       backdrop-filter: var(--glass-blur-sm); -webkit-backdrop-filter: var(--glass-blur-sm);
       will-change: transform;
     }
-    .next-project:hover { background: rgba(22,21,43,.8); }
+    .next-project:hover { background: rgba(22,21,43,.8);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
     .next-label {
       font-family: 'DM Mono', monospace; font-size: .68rem;
       letter-spacing: .2em; text-transform: uppercase;
@@ -346,8 +355,33 @@
     #page-veil.visible { opacity: 1; pointer-events: all; }
     @media (prefers-reduced-motion: reduce) {
       #page-veil { transition: none; }
+    }
+    /* ── Print styles ── */
+    @media print {
+      body { background: #fff !important; color: #000 !important; cursor: auto !important; }
+      nav, .cursor, #page-veil, #scroll-progress, #back-to-top,
+      .next-project, .splash-screen, #splash { display: none !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      h1, h2, h3 { color: #000 !important; }
+      .project-hero { min-height: auto !important; padding: 2rem 0 !important;
+        background: #fff !important; }
+      .body-text, .project-intro, p { color: #333 !important; }
+      img { max-width: 100% !important; }
+      @page { margin: 2cm; }
     }</style>
   <link rel="canonical" href="https://hellojackmao.com/projects/toronto-in-bloom.html"/>
+
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Toronto in Bloom",
+      "creator": { "@type": "Person", "name": "Jack Mao", "url": "https://hellojackmao.com" },
+      "description": "Social media content documenting the 2026 cherry blossom season at High Park, Toronto.",
+      "dateCreated": "2026",
+      "url": "https://hellojackmao.com/projects/toronto-in-bloom.html"
+    }
+  </script>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
