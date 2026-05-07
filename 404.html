@@ -13,6 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Jack Mao"/>
   <meta name="theme-color" content="#ccff00"/>
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -139,7 +142,8 @@ body {
       cursor: none;
     }
 
-.btn:hover { transform: translateY(-2px); }
+.btn:hover { transform: translateY(-2px);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
 
 .btn-primary {
       background: #ccff00;
@@ -148,7 +152,8 @@ body {
       box-shadow: 0 6px 24px rgba(204,255,0,0.2);
     }
 
-.btn-primary:hover { box-shadow: 0 10px 32px rgba(204,255,0,0.3); }
+.btn-primary:hover { box-shadow: 0 10px 32px rgba(204,255,0,0.3);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
 
 .btn-ghost {
       background: rgba(255,255,255,0.04);
@@ -156,7 +161,8 @@ body {
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-.btn-ghost:hover { color: #ffffff; border-color: rgba(255,255,255,0.2); }
+.btn-ghost:hover { color: #ffffff; border-color: rgba(255,255,255,0.2);       transition: color 0.2s, background 0.2s, opacity 0.2s, border-color 0.2s;
+    }
 
 /* Decorative ✦ marks */
 
@@ -207,8 +213,30 @@ a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius
     #page-veil.visible { opacity: 1; pointer-events: all; }
     @media (prefers-reduced-motion: reduce) {
       #page-veil { transition: none; }
+    }
+    /* ── Print styles ── */
+    @media print {
+      body { background: #fff !important; color: #000 !important; cursor: auto !important; }
+      nav, .cursor, #page-veil, #scroll-progress, #back-to-top,
+      .next-project, .splash-screen, #splash { display: none !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      h1, h2, h3 { color: #000 !important; }
+      .project-hero { min-height: auto !important; padding: 2rem 0 !important;
+        background: #fff !important; }
+      .body-text, .project-intro, p { color: #333 !important; }
+      img { max-width: 100% !important; }
+      @page { margin: 2cm; }
     }</style>
   <link rel="canonical" href="https://hellojackmao.com/404.html"/>
+
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "404 — Jack Mao",
+      "url": "https://hellojackmao.com/404.html"
+    }
+  </script>
 </head>
 <body style="touch-action: pan-y;">
   <div class="cursor" id="cursor"></div>

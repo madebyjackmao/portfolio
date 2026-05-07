@@ -30,6 +30,9 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Jack Mao"/>
   <meta name="theme-color" content="#ccff00"/>
   <script>
     // Synchronous: hide splash before first paint when navigating back
@@ -44,7 +47,20 @@
 .skip-splash #splash { display: none !important; }
 
 .skip-splash #main { opacity: 1 !important; }
-  </style>
+  
+    /* ── Print styles ── */
+    @media print {
+      body { background: #fff !important; color: #000 !important; cursor: auto !important; }
+      nav, .cursor, #page-veil, #scroll-progress, #back-to-top,
+      .next-project, .splash-screen, #splash { display: none !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      h1, h2, h3 { color: #000 !important; }
+      .project-hero { min-height: auto !important; padding: 2rem 0 !important;
+        background: #fff !important; }
+      .body-text, .project-intro, p { color: #333 !important; }
+      img { max-width: 100% !important; }
+      @page { margin: 2cm; }
+    }</style>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
@@ -1343,6 +1359,21 @@
     }
     :focus:not(:focus-visible) { outline: none; }</style>
   <link rel="canonical" href="https://hellojackmao.com/"/>
+
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Jack Mao",
+        "url": "https://hellojackmao.com",
+        "jobTitle": "Designer & Illustrator",
+        "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
+        "sameAs": ["https://www.linkedin.com/in/jack-mao", "https://hellojackmao.com"]
+      }
+    }
+  </script>
 </head>
 <body style="touch-action: pan-y;">
 
