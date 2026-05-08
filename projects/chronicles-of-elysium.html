@@ -109,7 +109,7 @@
     html{scroll-behavior:smooth;}
     img{-webkit-user-drag:none;user-drag:none;user-select:none;-webkit-user-select:none;pointer-events:none;}
     body{font-family:'Syne',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
-    .cursor{position:fixed;width:14px;height:14px;background:var(--gold-light);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+    .cursor{position:fixed;left:-100px;top:-100px;width:14px;height:14px;background:var(--gold-light);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
     .cursor.hovering{width:42px;height:42px;background:var(--gold);}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
@@ -120,7 +120,6 @@
 
     /* Hero */
     .project-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:10rem 3rem 5rem;position:relative;overflow:hidden;background:radial-gradient(ellipse 100% 80% at 60% 100%,#1a4a2a 0%,#0a2010 35%,var(--navy) 70%);}
-    .hero-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;}
     .hero-content{position:relative;z-index:1;}
     .edition-tag{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
     .edition-tag::before{content:'';display:block;width:32px;height:1px;background:var(--gold-light);}
@@ -305,7 +304,6 @@
 
 <!-- HERO -->
   <div class="project-hero">
-    <img class="hero-cover" src="../images/kassandra-cover.png" alt="Kassandra: The Harmony of Elysium" />
     <div class="hero-content">
       <div class="edition-tag">Game Design · RTA928</div>
       <h1 class="hero-title">Chronicles of<br>Elysium</h1>
@@ -448,10 +446,10 @@
     <div class="next-arrow">→</div>
   </a>
 
-    <footer>
+      <footer>
     <span style="color:var(--purple-light)">Jack Mao</span>
-    <span>© <time datetime="2026">2026</time> — All rights reserved</span>
-    <span>Built with <span style="color:#ff3333;">♥</span> + Figma</span>
+    <span style="color:var(--purple-light)">© <time datetime="2026">2026</time> — All rights reserved</span>
+    <span style="color:var(--purple-light)">Built with <span style="color:#ff3333;">♥</span> + Figma</span>
   </footer>
 
   <script>

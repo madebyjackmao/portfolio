@@ -109,7 +109,7 @@
     html{scroll-behavior:smooth;}
     img{-webkit-user-drag:none;user-drag:none;user-select:none;-webkit-user-select:none;pointer-events:none;}
     body{font-family:'Syne',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
-    .cursor{position:fixed;width:14px;height:14px;background:var(--red-light);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+    .cursor{position:fixed;left:-100px;top:-100px;width:14px;height:14px;background:var(--red-light);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
     .cursor.hovering{width:42px;height:42px;background:var(--red);}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
@@ -442,10 +442,10 @@
     <div class="next-arrow">→</div>
   </a>
 
-    <footer>
+      <footer>
     <span style="color:var(--purple-light)">Jack Mao</span>
-    <span>© <time datetime="2026">2026</time> — All rights reserved</span>
-    <span>Built with <span style="color:#ff3333;">♥</span> + Figma</span>
+    <span style="color:var(--purple-light)">© <time datetime="2026">2026</time> — All rights reserved</span>
+    <span style="color:var(--purple-light)">Built with <span style="color:#ff3333;">♥</span> + Figma</span>
   </footer>
 
   <script>

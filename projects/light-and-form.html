@@ -65,7 +65,7 @@
 
     /* ── Cursor ── */
     .cursor {
-      position: fixed; width: 14px; height: 14px;
+      position: fixed; left: -100px; top: -100px; width: 14px; height: 14px;
       background: var(--lime); border-radius: 50%;
       pointer-events: none; z-index: 9999;
       transform: translate(-50%,-50%);
@@ -309,7 +309,7 @@
         background: linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 70%);
         border-radius: inherit; pointer-events: none;
       }
-      .project-hero { padding: 7rem 1.5rem 3rem; }
+      .project-hero { min-height: 100vh; padding: 8rem 1.5rem 4rem; }
       .project-content { padding: 3rem 1.5rem;
       content-visibility: auto; contain-intrinsic-size: 0 2000px;
     }
