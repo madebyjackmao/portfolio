@@ -230,6 +230,31 @@ a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius
       .body-text, .project-intro, p { color: #333 !important; }
       img { max-width: 100% !important; }
       @page { margin: 2cm; }
+    }
+    @media (max-width: 768px) {
+      :root {
+        --glass-bg: rgba(255,255,255,.04);
+        --glass-border: rgba(255,255,255,.09);
+        --glass-border-top: rgba(255,255,255,.16);
+        --glass-blur: blur(18px) saturate(160%);
+        --glass-shadow: 0 6px 24px rgba(0,0,0,.28), 0 1px 0 rgba(255,255,255,.06) inset;
+      }
+      nav {
+        top: .75rem; left: 50%; right: auto;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem); max-width: 560px;
+        border-radius: 100px; padding: .85rem 1.25rem;
+        background: rgba(15,14,26,.45);
+        backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-top-color: var(--glass-border-top);
+        box-shadow: var(--glass-shadow); border-bottom: none;
+      }
+      nav::before {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 70%);
+        border-radius: inherit; pointer-events: none;
+      }
     }</style>
   <link rel="canonical" href="https://hellojackmao.com/404.html"/>
 
@@ -242,6 +267,19 @@ a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius
     }
   </script>
   <meta name="referrer" content="strict-origin-when-cross-origin"/>
+    <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://hellojackmao.com/404.html"/>
+  <meta property="og:title" content="404 | Jack Mao"/>
+  <meta property="og:description" content="Page not found. Head back to Jack Mao's portfolio."/>
+  <meta property="og:image" content="https://hellojackmao.com/images/og-default.png"/>
+  <meta property="og:image:alt" content="Jack Mao Portfolio"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="404 | Jack Mao"/>
+  <meta name="twitter:description" content="Page not found. Head back to Jack Mao's portfolio."/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 </head>
 <body style="touch-action: pan-y;">
   <div class="cursor" id="cursor"></div>
