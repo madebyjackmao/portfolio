@@ -267,6 +267,74 @@
 
     .mag-rule{width:100%;height:3px;background:linear-gradient(90deg,#a855f7 0%,rgba(168,85,247,.1) 100%);}
 
+
+    /* ── Edition cards ── */
+    .editions {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+      padding: 4rem 3rem; max-width: 1100px; margin: 0 auto;
+    }
+    .edition-card {
+      display: flex; flex-direction: column;
+      text-decoration: none; color: var(--white);
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px; overflow: hidden;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+    .edition-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    .vol-01:hover { border-color: rgba(233,30,140,.45); box-shadow: 0 20px 60px rgba(233,30,140,.12); }
+    .vol-02:hover { border-color: rgba(255,68,68,.45);  box-shadow: 0 20px 60px rgba(255,68,68,.12); }
+    .edition-thumb {
+      width: 100%; height: auto; display: block; max-width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* Card body — flex column, three rows */
+    .edition-body {
+      display: flex; flex-direction: column;
+      padding: 1.25rem 1.75rem 1.75rem; flex: 1;
+    }
+
+    /* Row 1 — meta: category · year, tools */
+    .edition-top {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 1rem;
+    }
+    .edition-vol {
+      font-family: 'DM Mono', monospace; font-size: .6rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.35); margin-bottom: .25rem;
+    }
+    .edition-year {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .15em; color: rgba(255,255,255,.25);
+      margin-bottom: .4rem;
+    }
+    .edition-tools {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .06em; color: rgba(255,255,255,.2);
+      line-height: 1.5;
+    }
+
+    /* Row 2 — title */
+    .edition-mid { flex: 1; display: flex; align-items: center; padding: .5rem 0 1rem; }
+    .edition-name {
+      font-size: 1.5rem; font-weight: 800; line-height: 1.05;
+      letter-spacing: -.02em;
+    }
+    .vol-01 .edition-name { color: var(--pink-light); }
+    .vol-02 .edition-name { color: var(--red-light); }
+
+    /* Row 3 — CTA */
+    .edition-bottom { padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.07); }
+    .edition-arrow {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--lime);
+    }
+    .edition-arrow::after { content: '→'; transition: transform .2s; display: inline-block; }
+    .edition-card:hover .edition-arrow::after { transform: translateX(4px); }
+
     /* ── Hub hero ── */
     .hub-hero {
       min-height: 75vh; display: flex; flex-direction: column;
@@ -287,10 +355,6 @@
     .hub-intro { font-size: clamp(1rem,1.8vw,1.2rem); color: rgba(255,255,255,.6); margin-top: 1.5rem; max-width: 560px; line-height: 1.6; }
 
     /* ── Edition cards ── */
-    .editions {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
-      padding: 4rem 3rem; max-width: 1100px; margin: 0 auto;
-    }
     .edition-card {
       display: block; text-decoration: none; color: var(--white);
       background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
@@ -304,32 +368,6 @@
       width: 100%; height: auto; display: block; max-width: 100%;
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .edition-info {
-      padding: 1.5rem 1.75rem 2rem;
-      display: flex; align-items: flex-end; justify-content: space-between;
-    }
-    .edition-vol {
-      font-family: 'DM Mono', monospace; font-size: .6rem;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255,255,255,.3); margin-bottom: .6rem;
-    }
-    .edition-name {
-      font-size: 1.4rem; font-weight: 800; line-height: 1.05;
-      letter-spacing: -.02em; margin-bottom: .6rem;
-    }
-    .edition-meta { font-family: 'DM Mono', monospace; font-size: .65rem; color: rgba(255,255,255,.35); letter-spacing: .05em; }
-    .edition-cta::after { content: '→'; transition: transform .2s; }
-
-    .edition-arrow {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--lime);
-      margin-top: 1rem;
-    }
-    .edition-arrow::after { content: '→'; transition: transform .2s; display: inline-block; }
-    .edition-card:hover .edition-arrow::after { transform: translateX(4px); }
-    .vol-01 .edition-name { color: var(--pink-light) !important; }
-    .vol-02 .edition-name { color: var(--red-light) !important; }
 
     /* ── Concept section ── */
     .hub-concept { max-width: 780px; margin: 0 auto; padding: 0 3rem 4rem; }
@@ -389,9 +427,9 @@
       .nav-back { font-size: .7rem; }
       .nav-dropdown-btn { padding: .35rem .8rem; font-size: .72rem; }
       .hub-hero { padding: 7rem 1.5rem 3rem; min-height: 60vh; }
-      .editions { grid-template-columns: 1fr !important; padding: 2rem 1.5rem; gap: 1.5rem; }
       .hub-concept { padding: 0 1.5rem 3rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: .4rem; text-align: center; align-items: center; }
+      .editions { grid-template-columns: 1fr !important; padding: 2rem 1.5rem; gap: 1.5rem; }
     }
 
     @media print {
@@ -440,24 +478,37 @@
   <div class="editions">
     <a href="so-good.html" class="edition-card vol-01">
       <img class="edition-thumb" src="../images/thumb-so-good.png" alt="Special Edition ft. Zara Larsson — So Good" loading="lazy"/>
-      <div class="edition-info">
-        <div class="edition-vol">Vol. 01 · Editorial Design · <time datetime="2017">2017</time></div>
-        <div class="edition-name">Zara Larsson<br>So Good.</div>
-        <div class="edition-meta">Adobe InDesign · Photoshop · Illustrator</div>
-        <div class="edition-arrow">View project</div>
+      <div class="edition-body">
+        <div class="edition-top">
+          <div class="edition-vol">Vol. 01 · Editorial Design</div>
+          <div class="edition-year"><time datetime="2017">2017</time></div>
+          <div class="edition-tools">Adobe InDesign · Photoshop · Illustrator</div>
+        </div>
+        <div class="edition-mid">
+          <div class="edition-name">Zara Larsson<br>So Good.</div>
+        </div>
+        <div class="edition-bottom">
+          <div class="edition-arrow">View project</div>
+        </div>
       </div>
     </a>
     <a href="after-hours.html" class="edition-card vol-02">
       <img class="edition-thumb" src="../images/thumb-after-hours.png" alt="Special Edition ft. The Weeknd — After Hours" loading="lazy"/>
-      <div class="edition-info">
-        <div class="edition-vol">Vol. 02 · Advertising · <time datetime="2022">2022</time></div>
-        <div class="edition-name">The Weeknd<br>After Hours.</div>
-        <div class="edition-meta">Adobe Photoshop · Illustrator</div>
-        <div class="edition-arrow">View project</div>
+      <div class="edition-body">
+        <div class="edition-top">
+          <div class="edition-vol">Vol. 02 · Advertising</div>
+          <div class="edition-year"><time datetime="2022">2022</time></div>
+          <div class="edition-tools">Adobe Photoshop · Illustrator</div>
+        </div>
+        <div class="edition-mid">
+          <div class="edition-name">The Weeknd<br>After Hours.</div>
+        </div>
+        <div class="edition-bottom">
+          <div class="edition-arrow">View project</div>
+        </div>
       </div>
     </a>
-  </div>  </div>
-
+  </div>
   <div class="hub-concept">
     <div class="section-heading">The Concept</div>
     <div class="body-text">
