@@ -358,6 +358,7 @@
     }
     .comment-text { color: rgba(255,255,255,.6); }
 
+    .mag-rule{width:100%;height:3px;background:linear-gradient(90deg,#c084fc 0%,rgba(192,132,252,.1) 100%);}
     /* ══════════════════════════════════════════════
        V2 MOBILE (≤768px) — liquid glass
     ══════════════════════════════════════════════ */
@@ -458,6 +459,7 @@
     <h1 class="project-title">Toronto<br><em>in Bloom</em></h1>
   </div>
 
+  <div class="mag-rule"></div>
 
   <div class="project-content">
 
@@ -678,6 +680,14 @@
         });
       });
     })();
+  
+    // Fix bfcache restore — remove veil on back navigation
+    window.addEventListener('pageshow', e => {
+      if (e.persisted) {
+        const veil = document.getElementById('page-veil');
+        if (veil) { veil.classList.remove('visible'); veil.style.opacity = '0'; }
+      }
+    });
   </script>
   <button id="back-to-top" aria-label="Back to top">↑</button>
 </body>

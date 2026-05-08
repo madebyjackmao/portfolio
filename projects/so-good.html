@@ -539,6 +539,14 @@
         });
       });
     })();
+  
+    // Fix bfcache restore — remove veil on back navigation
+    window.addEventListener('pageshow', e => {
+      if (e.persisted) {
+        const veil = document.getElementById('page-veil');
+        if (veil) { veil.classList.remove('visible'); veil.style.opacity = '0'; }
+      }
+    });
   </script>
   <button id="back-to-top" aria-label="Back to top">↑</button>
 </body>
