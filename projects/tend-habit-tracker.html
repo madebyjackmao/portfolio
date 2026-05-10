@@ -372,17 +372,17 @@
       }
       nav {
         top:.75rem; left:50%; right:auto;
-        width:calc(100% - 1.5rem);
+        width:calc(100% - 2rem);
         max-width:560px;
         transform:translateX(-50%);
-        padding:.72rem .85rem;
-        border-radius:22px;
+        padding:.85rem 1.25rem;
+        border-radius:100px;
         background:var(--glass-bg);
         backdrop-filter:var(--glass-blur);
         -webkit-backdrop-filter:var(--glass-blur);
         border:1px solid var(--glass-border);
         border-top-color:var(--glass-border-top);
-        border-bottom:1px solid var(--glass-border);
+        border-bottom:none;
         box-shadow:var(--glass-shadow);
         overflow:visible;
       }
@@ -417,10 +417,10 @@
         box-shadow:var(--glass-shadow);
       }
       .project-hero {
-        min-height:auto;
-        padding:7.4rem 1rem 3rem;
-        gap:2rem;
-        align-items:start;
+        min-height:100vh;
+        padding:8rem 1.5rem 4rem;
+        gap:2.5rem;
+        align-items:center;
       }
       .project-title {
         font-size:clamp(3.4rem, 17vw, 5.8rem);
@@ -443,7 +443,7 @@
         box-shadow:0 8px 26px rgba(54,45,71,.08);
       }
       .hero-panel {
-        width:min(78vw, 300px);
+        width:min(76vw, 300px);
         padding:.62rem;
         border-radius:30px;
         background:var(--glass-bg);
@@ -537,14 +537,15 @@
       nav { padding:1rem 1.5rem; }
     }
     @media (max-width: 768px) {
-      nav { padding:.72rem .85rem; }
-      .project-hero { padding:7.4rem 1rem 3rem; }
+      nav { padding:.85rem 1.25rem; }
+      .project-hero { min-height:100vh; padding:8rem 1.5rem 4rem; }
       .hero-panel { max-width:none; }
-      .project-content { padding:3.5rem 1rem; }
+      .project-content { padding:3rem 1.5rem; }
     }
     @media (max-width: 620px) {
       .nav-back { display:none; }
       .project-title { font-size:clamp(3.2rem,16vw,5rem); }
+      .project-hero { padding:7rem 1.5rem 3.5rem; }
       .phone-row { grid-template-columns:1fr; }
       .phone-row .phone { transform:none !important; min-height:360px; }
       .phone-screen { min-height:332px; }
