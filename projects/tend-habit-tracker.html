@@ -656,6 +656,25 @@
       .hero-meta { grid-template-columns:1fr; }
       .next-project { padding:2rem 1.5rem; }
     }
+    @media (max-width: 768px) {
+      nav {
+        background: rgba(251,250,246,.72);
+        border: 1px solid rgba(128,103,223,.18);
+        border-top-color: rgba(255,255,255,.75);
+        border-bottom: none;
+        box-shadow: 0 10px 34px rgba(54,45,71,.14), 0 1px 0 rgba(255,255,255,.72) inset;
+      }
+      nav::before { background: linear-gradient(135deg, rgba(255,255,255,.42), transparent 46%); }
+      .nav-logo { color: var(--navy); font-size: 1rem; }
+      .nav-logo span { color: var(--case-accent, var(--purple-light)); }
+      .nav-dropdown-btn {
+        color: #6e6878;
+        background: rgba(251,250,246,.46);
+        border: 1px solid rgba(128,103,223,.2);
+        border-radius: 100px;
+        padding: .45rem 1rem;
+      }
+    }
     
     /* Standard project page transition */
     #page-veil {
