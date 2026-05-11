@@ -1333,6 +1333,8 @@
       #back-to-top { bottom: calc(6.75rem + env(safe-area-inset-bottom)); right: 1.25rem; width: 64px; height: 64px; }
       .mobile-tabbar {
         position: fixed;
+        top: auto;
+        right: auto;
         left: 50%;
         bottom: calc(.85rem + env(safe-area-inset-bottom));
         z-index: 120;
@@ -1340,8 +1342,11 @@
         display: grid;
         grid-template-columns: 1fr 1fr 3.25rem 1fr;
         align-items: center;
+        justify-content: initial;
         gap: .32rem;
         width: min(calc(100% - 1.5rem), 24rem);
+        max-width: 24rem;
+        height: auto;
         min-height: 4.25rem;
         padding: .55rem;
         border-radius: 999px;
@@ -1351,6 +1356,7 @@
         backdrop-filter: blur(22px) saturate(170%);
         -webkit-backdrop-filter: blur(22px) saturate(170%);
         box-shadow: 0 18px 46px rgba(0,0,0,.38), 0 1px 0 rgba(255,255,255,.08) inset;
+        transition: opacity .24s, transform .32s cubic-bezier(.2,1.2,.3,1);
       }
       .mobile-tabbar::before {
         content: '';
@@ -1406,6 +1412,11 @@
       .mobile-tabbar.is-open .mobile-action-mark {
         transform: translateY(-1px) rotate(45deg);
       }
+      .mobile-tabbar.is-hidden {
+        opacity: 0;
+        transform: translate(-50%, calc(110% + env(safe-area-inset-bottom)));
+        pointer-events: none;
+      }
       .mobile-action-menu {
         position: fixed;
         left: 50%;
@@ -1424,6 +1435,11 @@
         opacity: 1;
         pointer-events: auto;
         transform: translate(-50%, 0) scale(1);
+      }
+      .mobile-action-menu.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, .8rem) scale(.96);
       }
       .mobile-action-menu a {
         display: flex;
@@ -2154,11 +2170,17 @@
       const menu = document.getElementById('mobileActionMenu');
       const button = document.getElementById('mobileActionBtn');
       if (!tabbar || !menu || !button) return;
+      let scrollTimer = null;
 
       const setOpen = open => {
         tabbar.classList.toggle('is-open', open);
         menu.classList.toggle('is-open', open);
         button.setAttribute('aria-expanded', String(open));
+      };
+      const setHidden = hidden => {
+        if (tabbar.classList.contains('is-open')) hidden = false;
+        tabbar.classList.toggle('is-hidden', hidden);
+        menu.classList.toggle('is-hidden', hidden);
       };
 
       button.addEventListener('click', event => {
@@ -2178,6 +2200,13 @@
 
       window.addEventListener('hashchange', () => setOpen(false));
       window.addEventListener('pagehide', () => setOpen(false));
+      window.addEventListener('scroll', () => {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+        setOpen(false);
+        setHidden(true);
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => setHidden(false), 260);
+      }, { passive: true });
     })();
 
     // -- Page transition --
