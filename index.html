@@ -36,6 +36,12 @@
     if (window.location.search !== '?splash=1') {
       document.documentElement.classList.add('skip-splash');
     }
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
   </script>
   <style>    * { -webkit-tap-highlight-color: transparent; }
 
@@ -2044,6 +2050,9 @@
     })();
     // Fix bfcache restore — remove veil on back navigation
     window.addEventListener('pageshow', e => {
+      if (!window.location.hash) {
+        requestAnimationFrame(() => window.scrollTo(0, 0));
+      }
       if (e.persisted) {
         const veil = document.getElementById('page-veil');
         if (veil) { veil.classList.remove('visible'); veil.style.opacity = '0'; }
