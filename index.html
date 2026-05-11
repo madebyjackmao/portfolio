@@ -1386,21 +1386,22 @@
         gap: 1.5rem;
         padding: 0 1.5rem;
       }
-      nav { gap: .55rem; padding: .85rem 1rem; }
+      nav { gap: .45rem; padding: .85rem .9rem; }
       .nav-logo {
         display: inline-block;
         width: auto;
-        max-width: 10.4rem;
-        min-width: 0;
-        overflow: hidden;
+        max-width: none;
+        min-width: max-content;
+        overflow: visible;
         white-space: nowrap;
         line-height: 1;
-        font-size: clamp(.56rem, 2.45vw, .72rem);
+        flex: 0 0 auto;
+        font-size: clamp(.54rem, 2.2vw, .68rem);
         letter-spacing: .02em;
       }
       .nav-logo span { margin: 0 .08rem; }
-      .nav-links { gap: .32rem; margin-left: auto; flex: 0 0 auto; }
-      .nav-links a { font-size: clamp(.5rem, 2.05vw, .58rem); letter-spacing: .07em; padding: 0 .04rem; }
+      .nav-links { gap: .26rem; margin-left: auto; flex: 0 0 auto; }
+      .nav-links a { font-size: clamp(.48rem, 1.95vw, .55rem); letter-spacing: .06em; padding: 0 .03rem; }
 
       .form-row { grid-template-columns: 1fr; }
     }</style>
