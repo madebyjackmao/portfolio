@@ -341,7 +341,11 @@
       border-radius:18px; padding:1.25rem;
     }
     .swatches { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
-    .swatch { width:70px; height:70px; border-radius:18px; border:1px solid var(--glass-border); }
+    .swatch {
+      width:70px; height:70px; border-radius:18px;
+      border:2px solid rgba(128,103,223,.24);
+      box-shadow:0 0 0 1px rgba(255,255,255,.72) inset, 0 10px 24px rgba(54,45,71,.08);
+    }
     .type-sample { font-size:clamp(2rem,5vw,4rem); font-weight:800; line-height:.95; letter-spacing:-.04em; }
     .pull-quote {
       margin:3.5rem 0; padding:2rem 0 2rem 2rem; border-left:3px solid var(--lime);
@@ -358,7 +362,7 @@
     .next-project:hover { background:#f7f3ee; }
     .next-project > div { min-width:0; overflow:visible; }
     .next-label { font-family:'DM Mono', monospace; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:#747383; margin-bottom:.4rem; }
-    .next-title { display:block; font-size:1.5rem; font-weight:800; letter-spacing:-.02em; line-height:1.35; padding-bottom:.06em; overflow:visible; }
+    .next-title { display:block; font-size:1.5rem; font-weight:800; letter-spacing:-.02em; line-height:1.45; padding-bottom:.22em; overflow:visible; }
     .next-arrow { flex:0 0 auto; font-size:2rem; line-height:1; color:#b6a8c9; transition:color .2s; }
     .next-project:hover .next-arrow { color:var(--lime); }
     footer {
@@ -665,7 +669,7 @@
         box-shadow:none;
       }
       .next-project > div { min-width:0; }
-      .next-title { line-height:1.35; padding-bottom:.06em; overflow-wrap:anywhere; }
+      .next-title { line-height:1.45; padding-bottom:.22em; overflow-wrap:anywhere; }
       .next-arrow { flex:0 0 auto; line-height:1; }
     }
     @media (max-width: 620px) {
@@ -868,7 +872,7 @@
         min-height: 3.35rem;
         color: #111;
         background: var(--lime, #ccff00);
-        box-shadow: 0 12px 30px rgba(204,255,0,.24), 0 1px 0 rgba(255,255,255,.55) inset;
+        box-shadow: 0 12px 30px rgba(128,103,223,.28), 0 1px 0 rgba(255,255,255,.55) inset;
       }
       .mobile-tab-icon,
       .mobile-home-icon { width: 1.32rem; height: 1.32rem; display: block; }
