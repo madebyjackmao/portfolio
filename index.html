@@ -1078,6 +1078,10 @@
       color: var(--lime);
       animation: float-idle 1.2s ease-in-out infinite;
     }
+    .mobile-tabbar,
+    .mobile-action-menu {
+      display: none;
+    }
 
 
     /* ======================================
@@ -1326,7 +1330,127 @@
       .contact-email { font-size: clamp(0.9rem, 4vw, 1.2rem); word-break: break-word;
  }
       .social-btn { font-size: 0.72rem; padding: 0.6rem 1rem; }
-      #back-to-top { bottom: 5rem; right: 1.25rem; width: 64px; height: 64px; }
+      #back-to-top { bottom: calc(6.75rem + env(safe-area-inset-bottom)); right: 1.25rem; width: 64px; height: 64px; }
+      .mobile-tabbar {
+        position: fixed;
+        left: 50%;
+        bottom: calc(.85rem + env(safe-area-inset-bottom));
+        z-index: 120;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr 3.25rem 1fr;
+        align-items: center;
+        gap: .32rem;
+        width: min(calc(100% - 1.5rem), 24rem);
+        min-height: 4.25rem;
+        padding: .55rem;
+        border-radius: 999px;
+        border: 1px solid var(--glass-border);
+        border-top-color: var(--glass-border-top);
+        background: rgba(15,14,26,.66);
+        backdrop-filter: blur(22px) saturate(170%);
+        -webkit-backdrop-filter: blur(22px) saturate(170%);
+        box-shadow: 0 18px 46px rgba(0,0,0,.38), 0 1px 0 rgba(255,255,255,.08) inset;
+      }
+      .mobile-tabbar::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 46%);
+      }
+      .mobile-tab-link,
+      .mobile-action-btn {
+        position: relative;
+        z-index: 1;
+        min-height: 2.9rem;
+        border: 0;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: 'DM Mono', monospace;
+        font-size: .62rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.68);
+        background: transparent;
+        transition: transform .22s cubic-bezier(.2,1.4,.3,1), background .22s, color .22s;
+      }
+      .mobile-tab-link:active,
+      .mobile-action-btn:active {
+        transform: scale(.94);
+      }
+      .mobile-tab-link:hover,
+      .mobile-tab-link:focus-visible {
+        color: var(--white);
+        background: rgba(255,255,255,.06);
+      }
+      .mobile-action-btn {
+        width: 3.25rem;
+        min-height: 3.25rem;
+        color: #111;
+        background: var(--lime);
+        box-shadow: 0 12px 30px rgba(204,255,0,.24), 0 1px 0 rgba(255,255,255,.55) inset;
+      }
+      .mobile-action-mark {
+        display: block;
+        font-size: 1.45rem;
+        line-height: 1;
+        transform: translateY(-1px);
+        transition: transform .28s cubic-bezier(.2,1.45,.3,1);
+      }
+      .mobile-tabbar.is-open .mobile-action-mark {
+        transform: translateY(-1px) rotate(45deg);
+      }
+      .mobile-action-menu {
+        position: fixed;
+        left: 50%;
+        bottom: calc(5.55rem + env(safe-area-inset-bottom));
+        z-index: 119;
+        transform: translate(-50%, .8rem) scale(.96);
+        transform-origin: bottom center;
+        display: grid;
+        gap: .45rem;
+        width: min(calc(100% - 3rem), 19rem);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .22s, transform .28s cubic-bezier(.2,1.35,.3,1);
+      }
+      .mobile-action-menu.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, 0) scale(1);
+      }
+      .mobile-action-menu a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 3rem;
+        padding: .8rem 1rem;
+        border-radius: 18px;
+        border: 1px solid var(--glass-border);
+        border-top-color: var(--glass-border-top);
+        background: rgba(15,14,26,.84);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        box-shadow: 0 12px 34px rgba(0,0,0,.3);
+        color: var(--white);
+        text-decoration: none;
+        font-size: .78rem;
+        font-weight: 800;
+      }
+      .mobile-action-menu a span {
+        font-family: 'DM Mono', monospace;
+        font-size: .58rem;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--lime);
+      }
       .category-card {
         background: var(--glass-bg);
         border: 1px solid var(--glass-border);
@@ -1812,6 +1936,19 @@
       <polyline points="6,11 12,5 18,11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
+  <div class="mobile-action-menu" id="mobileActionMenu" aria-label="Contextual portfolio actions">
+    <a href="projects/tend-habit-tracker.html">Open Tend <span>Case</span></a>
+    <a href="projects/special-editions.html">Special Editions <span>Series</span></a>
+    <a href="#contact">Start a note <span>Contact</span></a>
+  </div>
+  <nav class="mobile-tabbar" id="mobileTabbar" aria-label="Mobile portfolio navigation">
+    <a class="mobile-tab-link" href="#work">Work</a>
+    <a class="mobile-tab-link" href="#about">About</a>
+    <button type="button" class="mobile-action-btn" id="mobileActionBtn" aria-label="Open contextual portfolio actions" aria-expanded="false" aria-controls="mobileActionMenu">
+      <span class="mobile-action-mark" aria-hidden="true">+</span>
+    </button>
+    <a class="mobile-tab-link" href="#contact">Contact</a>
+  </nav>
 
   <script>
     // -- Image protection --
@@ -2011,7 +2148,37 @@
     btt.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     btt.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
 
-      
+    // -- Mobile contextual tab bar --
+    (function() {
+      const tabbar = document.getElementById('mobileTabbar');
+      const menu = document.getElementById('mobileActionMenu');
+      const button = document.getElementById('mobileActionBtn');
+      if (!tabbar || !menu || !button) return;
+
+      const setOpen = open => {
+        tabbar.classList.toggle('is-open', open);
+        menu.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', String(open));
+      };
+
+      button.addEventListener('click', event => {
+        event.stopPropagation();
+        setOpen(!tabbar.classList.contains('is-open'));
+      });
+
+      menu.addEventListener('click', event => {
+        if (event.target.closest('a')) setOpen(false);
+      });
+
+      document.addEventListener('click', event => {
+        if (!tabbar.contains(event.target) && !menu.contains(event.target)) {
+          setOpen(false);
+        }
+      });
+
+      window.addEventListener('hashchange', () => setOpen(false));
+      window.addEventListener('pagehide', () => setOpen(false));
+    })();
 
     // -- Page transition --
     (function() {
