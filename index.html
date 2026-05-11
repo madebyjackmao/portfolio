@@ -1078,10 +1078,10 @@
       color: var(--lime);
       animation: float-idle 1.2s ease-in-out infinite;
     }
-    .mobile-tabbar,
-    .mobile-action-menu {
-      display: none;
-    }
+      .mobile-tabbar,
+      .mobile-action-menu {
+        display: none;
+      }
 
 
     /* ======================================
@@ -1340,7 +1340,7 @@
         z-index: 120;
         transform: translateX(-50%);
         display: grid;
-        grid-template-columns: repeat(3, minmax(3rem, 1fr)) 3.35rem;
+        grid-template-columns: 3.35rem repeat(3, minmax(2.8rem, 1fr));
         align-items: center;
         justify-content: initial;
         gap: .45rem;
@@ -1367,7 +1367,7 @@
         background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 46%);
       }
       .mobile-tab-link,
-      .mobile-action-btn {
+      .mobile-home-btn {
         position: relative;
         z-index: 1;
         min-height: 2.9rem;
@@ -1377,8 +1377,8 @@
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        font-family: 'DM Mono', monospace;
-        font-size: .88rem;
+        font-family: 'Syne', sans-serif;
+        font-size: .9rem;
         font-weight: 700;
         letter-spacing: .02em;
         text-transform: uppercase;
@@ -1387,7 +1387,7 @@
         transition: transform .22s cubic-bezier(.2,1.4,.3,1), background .22s, color .22s;
       }
       .mobile-tab-link:active,
-      .mobile-action-btn:active {
+      .mobile-home-btn:active {
         transform: scale(.94);
       }
       .mobile-tab-link:hover,
@@ -1395,35 +1395,22 @@
         color: var(--white);
         background: rgba(255,255,255,.06);
       }
-      .mobile-tab-link {
-        font-family: 'Syne', sans-serif;
-        font-weight: 800;
-      }
-      .mobile-tab-link span {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.9rem;
-        height: 1.9rem;
-        border-radius: 50%;
-        background: rgba(255,255,255,.045);
-      }
-      .mobile-action-btn {
+      .mobile-home-btn {
         width: 3.35rem;
         min-height: 3.35rem;
         color: #111;
         background: var(--lime);
         box-shadow: 0 12px 30px rgba(204,255,0,.24), 0 1px 0 rgba(255,255,255,.55) inset;
       }
-      .mobile-action-mark {
+      .mobile-tab-icon,
+      .mobile-home-icon {
+        width: 1.32rem;
+        height: 1.32rem;
         display: block;
-        font-size: 1.45rem;
-        line-height: 1;
-        transform: translateY(-1px);
-        transition: transform .28s cubic-bezier(.2,1.45,.3,1);
       }
-      .mobile-tabbar.is-open .mobile-action-mark {
-        transform: translateY(-1px) rotate(45deg);
+      .mobile-tab-link[aria-expanded="true"] {
+        color: var(--white);
+        background: rgba(255,255,255,.08);
       }
       .mobile-tabbar.is-hidden {
         opacity: 0;
@@ -1445,6 +1432,7 @@
         transition: opacity .22s, transform .28s cubic-bezier(.2,1.35,.3,1);
       }
       .mobile-action-menu.is-open {
+        display: grid;
         opacity: 1;
         pointer-events: auto;
         transform: translate(-50%, 0) scale(1);
@@ -1965,17 +1953,34 @@
       <polyline points="6,11 12,5 18,11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
-  <div class="mobile-action-menu" id="mobileActionMenu" aria-label="Contextual portfolio actions">
-    <a href="projects/tend-habit-tracker.html">Open Tend <span>Case</span></a>
-    <a href="projects/special-editions.html">Special Editions <span>Series</span></a>
-    <a href="#contact">Start a note <span>Contact</span></a>
+  <div class="mobile-action-menu" id="mobileWorkMenu" aria-label="Project pages">
+    <a href="projects/light-and-form.html">Light &amp; Form <span>2021</span></a>
+    <a href="projects/chronicles-of-elysium.html">Chronicles <span>2023</span></a>
+    <a href="projects/so-good.html">Zara Larsson <span>2017</span></a>
+    <a href="projects/after-hours.html">The Weeknd <span>2022</span></a>
+    <a href="projects/toronto-in-bloom.html">Toronto in Bloom <span>2026</span></a>
+    <a href="projects/tend-habit-tracker.html">Tend <span>2026</span></a>
+  </div>
+  <div class="mobile-action-menu" id="mobileAboutMenu" aria-label="About actions">
+    <a href="https://canva.link/hpvbnpc9260urd8" target="_blank" rel="noopener noreferrer">View resume <span>PDF</span></a>
+  </div>
+  <div class="mobile-action-menu" id="mobileContactMenu" aria-label="Contact links">
+    <a href="https://www.linkedin.com/in/jack-mao" target="_blank" rel="noopener noreferrer">LinkedIn <span>Profile</span></a>
+    <a href="https://www.instagram.com/jjjackmao" target="_blank" rel="noopener noreferrer">Instagram <span>Social</span></a>
+    <a href="https://www.behance.net/jackmao11" target="_blank" rel="noopener noreferrer">Behance <span>Work</span></a>
   </div>
   <nav class="mobile-tabbar" id="mobileTabbar" aria-label="Mobile portfolio navigation">
-    <a class="mobile-tab-link" href="#work" aria-label="Work" title="Work"><span aria-hidden="true">W</span></a>
-    <a class="mobile-tab-link" href="#about" aria-label="About" title="About"><span aria-hidden="true">A</span></a>
-    <a class="mobile-tab-link" href="#contact" aria-label="Contact" title="Contact"><span aria-hidden="true">C</span></a>
-    <button type="button" class="mobile-action-btn" id="mobileActionBtn" aria-label="Open contextual portfolio actions" aria-expanded="false" aria-controls="mobileActionMenu">
-      <span class="mobile-action-mark" aria-hidden="true">+</span>
+    <a class="mobile-home-btn" href="#hero" aria-label="Home" title="Home">
+      <svg class="mobile-home-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 11.2 12 4.8l7.5 6.4v7.2a1.8 1.8 0 0 1-1.8 1.8h-3.2v-5.4h-5v5.4H6.3a1.8 1.8 0 0 1-1.8-1.8v-7.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    </a>
+    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileWorkMenu" aria-label="Open project pages" aria-expanded="false" aria-controls="mobileWorkMenu" title="Work">
+      <svg class="mobile-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.6c2.4-.7 4.6-.3 7 1.1 2.4-1.4 4.6-1.8 7-1.1v12.8c-2.4-.7-4.6-.3-7 1.1-2.4-1.4-4.6-1.8-7-1.1V5.6Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 6.7v12.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileAboutMenu" aria-label="Open about menu" aria-expanded="false" aria-controls="mobileAboutMenu" title="About">
+      <svg class="mobile-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.2" r="3.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5.6 19.4c.9-3.4 3.1-5.2 6.4-5.2s5.5 1.8 6.4 5.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileContactMenu" aria-label="Open contact links" aria-expanded="false" aria-controls="mobileContactMenu" title="Contact">
+      <svg class="mobile-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.8 7.2h14.4v10.2H4.8V7.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m5.4 8 6.6 5.2L18.6 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </nav>
 
@@ -2180,42 +2185,57 @@
     // -- Mobile contextual tab bar --
     (function() {
       const tabbar = document.getElementById('mobileTabbar');
-      const menu = document.getElementById('mobileActionMenu');
-      const button = document.getElementById('mobileActionBtn');
-      if (!tabbar || !menu || !button) return;
+      const menus = Array.from(document.querySelectorAll('.mobile-action-menu'));
+      const buttons = Array.from(document.querySelectorAll('[data-mobile-menu]'));
+      if (!tabbar || !menus.length || !buttons.length) return;
       let scrollTimer = null;
 
-      const setOpen = open => {
-        tabbar.classList.toggle('is-open', open);
-        menu.classList.toggle('is-open', open);
-        button.setAttribute('aria-expanded', String(open));
+      const closeMenus = () => {
+        tabbar.classList.remove('is-open');
+        menus.forEach(menu => menu.classList.remove('is-open'));
+        buttons.forEach(button => button.setAttribute('aria-expanded', 'false'));
+      };
+      const openMenu = id => {
+        const target = document.getElementById(id);
+        const isOpen = target && target.classList.contains('is-open');
+        closeMenus();
+        if (target && !isOpen) {
+          tabbar.classList.add('is-open');
+          target.classList.add('is-open');
+          const trigger = buttons.find(button => button.dataset.mobileMenu === id);
+          if (trigger) trigger.setAttribute('aria-expanded', 'true');
+        }
       };
       const setHidden = hidden => {
         if (tabbar.classList.contains('is-open')) hidden = false;
         tabbar.classList.toggle('is-hidden', hidden);
-        menu.classList.toggle('is-hidden', hidden);
+        menus.forEach(menu => menu.classList.toggle('is-hidden', hidden));
       };
 
-      button.addEventListener('click', event => {
-        event.stopPropagation();
-        setOpen(!tabbar.classList.contains('is-open'));
+      buttons.forEach(button => {
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          openMenu(button.dataset.mobileMenu);
+        });
       });
 
-      menu.addEventListener('click', event => {
-        if (event.target.closest('a')) setOpen(false);
+      menus.forEach(menu => {
+        menu.addEventListener('click', event => {
+          if (event.target.closest('a')) closeMenus();
+        });
       });
 
       document.addEventListener('click', event => {
-        if (!tabbar.contains(event.target) && !menu.contains(event.target)) {
-          setOpen(false);
+        if (!tabbar.contains(event.target) && !menus.some(menu => menu.contains(event.target))) {
+          closeMenus();
         }
       });
 
-      window.addEventListener('hashchange', () => setOpen(false));
-      window.addEventListener('pagehide', () => setOpen(false));
+      window.addEventListener('hashchange', closeMenus);
+      window.addEventListener('pagehide', closeMenus);
       window.addEventListener('scroll', () => {
         if (!window.matchMedia('(max-width: 768px)').matches) return;
-        setOpen(false);
+        closeMenus();
         setHidden(true);
         clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => setHidden(false), 260);
