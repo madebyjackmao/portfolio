@@ -32,10 +32,6 @@
   <meta name="apple-mobile-web-app-title" content="Jack Mao"/>
   <meta name="theme-color" content="#ccff00"/>
   <script>
-    // Synchronous: hide splash before first paint when navigating back
-    if (window.location.search !== '?splash=1') {
-      document.documentElement.classList.add('skip-splash');
-    }
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
@@ -45,17 +41,11 @@
   </script>
   <style>    * { -webkit-tap-highlight-color: transparent; }
 
-/* Applied synchronously — splash never renders when navigating back */
-
-.skip-splash #splash { display: none !important; }
-
-.skip-splash #main { opacity: 1 !important; }
-  
-    /* -- Print styles -- */
+/* -- Print styles -- */
     @media print {
       body { background: #fff !important; color: #000 !important; cursor: auto !important; }
       nav, .cursor, #page-veil, #scroll-progress, #back-to-top,
-      .next-project, .splash-screen, #splash { display: none !important; }
+      .next-project, .splash-screen { display: none !important; }
       a { color: #000 !important; text-decoration: underline; }
       h1, h2, h3 { color: #000 !important; }
       .project-hero { min-height: auto !important; padding: 2rem 0 !important;
@@ -168,103 +158,9 @@
     .word-reveal.is-visible .word,
     .hero-sub.is-visible .word { opacity: 1; transform: translateY(0); }
 
-    /* -- Skip-splash synchronous overrides (set via head script) -- */
-    .skip-splash #splash { display: none !important; }
-    .skip-splash #main   { opacity: 1 !important; transition: none !important; }
-
-    /* -- Splash -- */
-    #splash {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(ellipse 80% 60% at 50% 100%, #5b3fff 0%, #2d1b8c 30%, #0f0e1a 70%);
-      transform: scale(1);
-      transform-origin: center center;
-      will-change: transform, opacity;
-      transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1),
-                  transform 0.55s cubic-bezier(0.4,0,0.2,1);
-      overflow: hidden;
-    }
-    #splash.hidden { opacity: 0; pointer-events: none; transform: scale(1.03); }
-
-    .splash-year {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(4rem, 15vw, 12rem);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      background: linear-gradient(160deg, #c4b5fd 0%, #7B6CF6 60%, #4c3fd0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both;
-      user-select: none;
-      width: 90vw;
-      text-align: center;
-    }
-    .splash-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(3.5rem, 14vw, 11rem);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      background: linear-gradient(160deg, #e0d8ff 0%, #9d8ffa 50%, #6B5CE7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both;
-      margin-bottom: 0;
-      user-select: none;
-      width: 90vw;
-      text-align: center;
-      white-space: nowrap;
-    }
-    .enter-btn {
-      margin-top: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: var(--lime);
-      border: none;
-      border-radius: 100px;
-      padding: 1rem 2rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #111;
-      cursor: auto;
-      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s both;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .enter-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(204,255,0,0.4);
-    }
-    .enter-btn:active { transform: scale(0.97); }
-    .dot {
-      width: 28px; height: 28px;
-      background: #111;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .splash-footer {
-      position: absolute;
-      bottom: 2rem;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.2);
-      font-family: 'DM Mono', monospace;
-      text-align: center;
-      letter-spacing: 0.05em;
-    }
-
     /* -- Main -- */
     #main {
-      opacity: 0;
-      transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1) 0.08s;
+      opacity: 1;
     }
     #main.visible { opacity: 1; }
 
@@ -1168,10 +1064,7 @@
       a, button, [role="button"] { cursor: auto; }
     }
     
-    @media (max-width: 400px) {
-      .splash-year  { font-size: 16vw; }
-      .splash-title { font-size: 12vw; }
-      .hero-heading { font-size: clamp(1.6rem, 6.5vw, 3rem); }
+    @media (max-width: 400px) {      .hero-heading { font-size: clamp(1.6rem, 6.5vw, 3rem); }
       .contact-email { font-size: 1rem; }
     }
 
@@ -1320,10 +1213,7 @@
         position: relative; overflow: hidden;
       }
       .hero-heading { font-size: clamp(2rem, 8vw, 3.5rem); }
-      .hero-sub { font-size: 0.82rem; }
-      .splash-year { font-size: clamp(3rem, 18vw, 6rem); }
-      .splash-title { font-size: clamp(2.2rem, 13vw, 5.5rem); }
-      #work { padding: 5rem 1.5rem; }
+      .hero-sub { font-size: 0.82rem; }      #work { padding: 5rem 1.5rem; }
       .work-categories { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
       .hub-banner { flex-direction: column; aspect-ratio: auto; height: auto; }
@@ -1440,17 +1330,6 @@
   <a href="#work" class="skip-to-content">Skip to content</a>
   <div class="cursor" id="cursor"></div>
   <div id="page-veil"></div>
-
-  <!-- -- SPLASH -- -->
-  <div id="splash">
-    <div class="splash-year"><time datetime="2026">2026</time></div>
-    <div class="splash-title">Portfolio</div>
-    <button type="button" class="enter-btn" id="enterBtn" aria-label="Enter portfolio">
-      enter <span class="dot"></span>
-    </button>
-    <p class="splash-footer">made proudly with ✦ Figma<br><span style="font-size:0.7rem; opacity:0.5;">with support from Claude AI</span></p>
-  </div>
-
   <!-- -- MAIN -- -->
   <main id="main">
 
@@ -1875,57 +1754,9 @@
       el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
-
-    // -- Splash enter button --
-    const splash = document.getElementById('splash');
-    const main   = document.getElementById('main');
-
-    function showMain() {
-      // -- Micro-scale dissolve --
-      // Apply scale via inline style for the transition duration only —
-      // this avoids creating a persistent stacking context that would
-      // break position:fixed children (nav, cursor).
-
-      // 1. Set initial scale with no transition so it registers instantly
-      main.style.transition     = 'none';
-      main.style.transform      = 'scale(0.985)';
-      main.style.transformOrigin = 'center top';
-
-      // 2. Force reflow — browser commits the starting state
-      void main.offsetHeight;
-
-      // 3. Arm transitions then trigger both animations
-      main.style.transition = [
-        'opacity 0.55s cubic-bezier(0.4,0,0.2,1) 0.08s',
-        'transform 0.55s cubic-bezier(0.4,0,0.2,1) 0.08s'
-      ].join(',');
-
-      splash.classList.add('hidden');
-      document.body.style.overflow = '';
-
-      requestAnimationFrame(() => {
-        main.classList.add('visible');    // opacity: 0 → 1
-        main.style.transform = 'scale(1)'; // scale: 0.985 → 1
-        // Reveal hero word-by-word after splash exits
-        document.querySelectorAll('.word-reveal').forEach(el => {
-          el.classList.add('is-visible');
-        });
-      });
-
-      // 4. After transition: strip inline styles so fixed children
-      //    (nav) resume normal fixed positioning with no stacking context
-      setTimeout(() => {
-        splash.style.display     = 'none';
-        main.style.transform     = '';
-        main.style.transition    = '';
-        main.style.transformOrigin = '';
-        startRevealObserver();
-      }, 700);
-    }
-
+    // -- Direct page reveal --
+    const main = document.getElementById('main');
     const shouldScrollToWork = window.location.hash === '#work';
-
-    document.getElementById('enterBtn').addEventListener('click', showMain);
 
     // -- Animation observers — all five systems --
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1967,47 +1798,16 @@
         }
       });
     }, { threshold: 0.2 });
-    if (document.documentElement.classList.contains('skip-splash')) {
-      main.classList.add('visible');
-      document.querySelectorAll('.word-reveal').forEach(el => el.classList.add('is-visible'));
-      if (shouldScrollToWork) {
-        document.getElementById('work').scrollIntoView({ behavior: 'instant' });
-        document.querySelectorAll('.fade-up').forEach(el => {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        });
-      }
-      startRevealObserver();
-    }
-
-
-    // -- Easter egg: 10 clicks anywhere → secret page --
-    (function() {
-      let clicks = parseInt(localStorage.getItem('jm_clicks') || '0');
-      const overlay = document.createElement('div');
-      overlay.style.cssText = 'position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;background:rgba(15,14,26,0);pointer-events:none;transition:background .5s;';
-      overlay.innerHTML = '<div id="egg-star" style="opacity:0;transform:scale(0.4) rotate(-30deg);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);pointer-events:none;"><svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 30px rgba(123,108,246,0.9));"><path d="M 88.24,41.32 Q 100.00,15.00 111.76,41.32 Q 123.51,67.64 152.18,70.69 Q 180.84,73.73 159.44,93.05 Q 138.04,112.36 144.00,140.56 Q 149.96,168.77 124.98,154.38 Q 100.00,140.00 75.02,154.38 Q 50.04,168.77 56.00,140.56 Q 61.96,112.36 40.56,93.05 Q 19.16,73.73 47.82,70.69 Q 76.49,67.64 88.24,41.32 Z" fill="#7B6CF6" stroke="#ff5533" stroke-width="4"/><text x="100" y="118" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-size="38" fill="#f5f0e8" letter-spacing="-1">JM</text></svg></div>';
-      document.body.appendChild(overlay);
-      const pip = document.createElement('div');
-      pip.style.cssText = 'position:fixed;bottom:1.5rem;left:1.5rem;z-index:99997;font-family:monospace;font-size:.6rem;letter-spacing:.15em;color:rgba(123,108,246,0);transition:color .4s;pointer-events:none;';
-      pip.textContent = '✦ 0 / 10';
-      document.body.appendChild(pip);
-      document.addEventListener('click', function(e) {
-        if (e.target.closest('a') || e.target.closest('button')) return;
-        clicks = Math.min(clicks + 1, 10);
-        localStorage.setItem('jm_clicks', clicks);
-        pip.style.color = 'rgba(123,108,246,0.5)';
-        pip.textContent = '✦ ' + clicks + ' / 10';
-        if (clicks >= 10) {
-          overlay.style.background = 'rgba(15,14,26,0.85)';
-          overlay.style.pointerEvents = 'all';
-          const star = document.getElementById('egg-star');
-          star.style.opacity = '1';
-          star.style.transform = 'scale(1) rotate(0deg)';
-          setTimeout(() => { window.location.href = 'secret.html'; }, 900);
-        }
+    main.classList.add('visible');
+    document.querySelectorAll('.word-reveal').forEach(el => el.classList.add('is-visible'));
+    if (shouldScrollToWork) {
+      document.getElementById('work').scrollIntoView({ behavior: 'instant' });
+      document.querySelectorAll('.fade-up').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
       });
-    })();
+    }
+    startRevealObserver();
     // -- Back to top --
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
